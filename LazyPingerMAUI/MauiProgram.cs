@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using LazyPingerMAUI.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace LazyPingerMAUI
 {
@@ -9,6 +10,8 @@ namespace LazyPingerMAUI
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .RegisterAppServices()
+                .RegisterViewModels()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -20,6 +23,19 @@ namespace LazyPingerMAUI
 #endif
 
             return builder.Build();
+        }
+
+        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<INewsService, MockNewsService>();
+
+            return mauiAppBuilder;
+        }
+
+        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddTransient<MainViewModel>();
+            return mauiAppBuilder;
         }
     }
 }

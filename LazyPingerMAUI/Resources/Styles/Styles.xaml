@@ -424,4 +424,28 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+     <ControlTemplate x:Key="DeviceCustomView">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{TemplateBinding IconImageSource}"
+                       BackgroundColor="{TemplateBinding IconBackgroundColor}"
+                       WidthRequest="100"
+                       HeightRequest="100"
+                       Aspect="AspectFill"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <StackLayout Grid.Column="1">
+                    <Label Text="{TemplateBinding CardTitle}"
+                           FontAttributes="Bold" />
+                    <Label Text="{TemplateBinding CardDescription}" />
+                </StackLayout>
+            </Grid>
+      </ControlTemplate>
+
 </ResourceDictionary>
