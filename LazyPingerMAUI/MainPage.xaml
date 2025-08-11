@@ -6,11 +6,12 @@
              x:Class="LazyPingerMAUI.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-
-            <HorizontalStackLayout>
+        <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*">
+            <VerticalStackLayout Grid.Row="0" HorizontalOptions="Center">
+                <Label Style="{StaticResource SubHeadline}" Text="LazyPinger, as lazy as possible "></Label>
+            </VerticalStackLayout>
+            
+            <HorizontalStackLayout Grid.Row="1" Padding="30,0" Spacing="25">
                 <CollectionView ItemsSource="{Binding DetectedDevices}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:DevicePing">
@@ -19,15 +20,22 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </HorizontalStackLayout>
-       
-            <Button
-                x:Name="CounterBtn"
-                Text="Ping All"
-                VerticalOptions="End"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"/>
-            
-        </VerticalStackLayout>
+
+            <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" Padding="20">
+
+                <Button Margin="20"
+                      x:Name="CounterBtn"
+                      Text="Ping"
+                      VerticalOptions="End"
+                      Clicked="OnCounterClicked"/>
+                
+                <Button Margin="20"
+                      Text="Stop"
+                      VerticalOptions="End"/>
+
+            </HorizontalStackLayout>
+      
+        </Grid>
     </ScrollView>
 
 </ContentPage>

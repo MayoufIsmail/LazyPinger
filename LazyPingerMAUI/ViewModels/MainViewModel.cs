@@ -16,18 +16,19 @@ namespace LazyPingerMAUI.ViewModels
 
         private void InitDummyDevices()
         {
-            DetectedDevices = new()
+            var temp = new DevicePing
             {
-                new DevicePing {
-                    ID = 0, Description = "Dummy Device", IP = "192.168.0.1", MacAddress = "FF:FF:FF:FF", Name = "DummyDevice", Port = 50,
-                },
-                new DevicePing {
-                    ID = 0, Description = "Dummy Device", IP = "192.168.0.1", MacAddress = "FF:FF:FF:FF", Name = "DummyDevice", Port = 50,
-                },
-                new DevicePing {
-                    ID = 0, Description = "Dummy Device", IP = "192.168.0.1", MacAddress = "FF:FF:FF:FF", Name = "DummyDevice", Port = 50,
-                }
+                ID = 0,
+                Description = "Dummy Device",
+                IP = "192.168.0.1",
+                MacAddress = "FF:FF:FF:FF",
+                Name = "DummyDevice",
+                Port = 50,
             };
+
+            for (int i = 0; i < 100; i++) {
+                DetectedDevices.Add(temp);
+            }
         }
     }
 }
