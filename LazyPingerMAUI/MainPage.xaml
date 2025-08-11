@@ -10,26 +10,22 @@
             Padding="30,0"
             Spacing="25">
 
-            <CollectionView ItemsSource="{Binding DetectedDevices}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:DevicePing">
-                            <views:DeviceView DeviceName="{Binding Name}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-
+            <HorizontalStackLayout>
+                <CollectionView ItemsSource="{Binding DetectedDevices}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:DevicePing">
+                            <views:DeviceView DevicePing="{Binding}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+       
             <Button
                 x:Name="CounterBtn"
-                Text="Click me" 
+                Text="Ping All"
+                VerticalOptions="End"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
+                Clicked="OnCounterClicked"/>
             
         </VerticalStackLayout>
     </ScrollView>

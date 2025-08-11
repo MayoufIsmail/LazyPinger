@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:LazyPinger.Core.Models;assembly=LazyPinger.Core"
              x:Class="LazyPingerMAUI.Views.DeviceView">
     <VerticalStackLayout>
         <Border 
@@ -12,16 +13,19 @@
                     BackgroundColor="{Binding IconBackgroundColor, FallbackValue='Grey'}">
                     <!-- <Image Source="{Binding IconImageSource}"/> -->
                  </Border>
-                <StackLayout Grid.Row="1">
-                    <Label Text="{Binding DeviceName, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding DeviceName, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding DeviceName, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding DeviceName, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding DeviceName, FallbackValue='Device Name'}"/>
+                <StackLayout VerticalOptions="Center" 
+                             HorizontalOptions="Center" 
+                             Grid.Row="1" 
+                             Margin="20"
+                             x:DataType="models:DevicePing">
+                    <Label Text="{Binding Name, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding IP, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding Description, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding MacAddress, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding Port, FallbackValue='Device Name'}"/>
                 </StackLayout>
 
                 <BoxView Grid.Row="2" BackgroundColor="{Binding BorderColor, FallbackValue='Black'}" />
-                <Label Grid.Row="2" Text="{Binding DeviceName, FallbackValue='Card description text.'}"/>
             </Grid>
         </Border>
     </VerticalStackLayout>

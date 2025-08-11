@@ -1,17 +1,19 @@
+using LazyPinger.Core.Models;
+
 namespace LazyPingerMAUI.Views;
 
 public partial class DeviceView : ContentView
 {
-    public static readonly BindableProperty DeviceNameProperty = BindableProperty.Create(nameof(DeviceName), typeof(string), typeof(DeviceView), string.Empty);
-
     public static readonly BindableProperty DeviceColorProperty = BindableProperty.Create(nameof(DeviceColor), typeof(Color), typeof(DeviceView));
 
     public static readonly BindableProperty DeviceBorderColorProperty = BindableProperty.Create(nameof(DeviceBorderColor), typeof(Color), typeof(DeviceView));
 
-    public string DeviceName
+    public static readonly BindableProperty DevicePingProperty = BindableProperty.Create(nameof(DevicePing), typeof(DevicePing), typeof(DeviceView));
+
+    public DevicePing DevicePing
     {
-        get => (string)GetValue(DeviceNameProperty);
-        set => SetValue(DeviceNameProperty, value);
+        get => (DevicePing)GetValue(DevicePingProperty);
+        set => SetValue(DevicePingProperty, value);
     }
 
     public Color DeviceColor
@@ -29,6 +31,5 @@ public partial class DeviceView : ContentView
     public DeviceView()
 	{
 		InitializeComponent();
-        BindingContext = this;
     }
 }
