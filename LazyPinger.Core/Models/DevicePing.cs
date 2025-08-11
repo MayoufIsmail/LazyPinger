@@ -2,7 +2,7 @@
 
 namespace LazyPinger.Core.Models
 {
-    public class Device
+    public class DevicePing
     {
         public int ID { get; set; }
 
