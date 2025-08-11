@@ -1,4 +1,5 @@
-﻿using LazyPingerMAUI.ViewModels;
+﻿using LazyPinger.Core.Services;
+using LazyPingerMAUI.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace LazyPingerMAUI
@@ -27,8 +28,7 @@ namespace LazyPingerMAUI
 
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddSingleton<INewsService, MockNewsService>();
-
+            mauiAppBuilder.Services.AddSingleton<IPingerService, PingerService>();
             return mauiAppBuilder;
         }
 

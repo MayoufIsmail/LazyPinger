@@ -29,5 +29,6 @@ public partial class DeviceView : ContentView
     public DeviceView()
 	{
 		InitializeComponent();
-	}
+        BindingContext = this;
+    }
 }
