@@ -7,15 +7,15 @@
     Shell.FlyoutBehavior="Disabled"
     Title="LazyPingerMAUI">
 
-    <ShellContent
+    <!--<ShellContent
         ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" />-->
 
     <TabBar>
-        <Tab x:Name="MainTab">
+        <Tab Title="Home" x:Name="MainTab">
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main"/>
         </Tab>
-        <Tab x:Name="HomeTab">
+        <Tab Title="Settings" x:Name="SettingsTab">
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main"/>
         </Tab>
     </TabBar>

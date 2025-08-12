@@ -17,17 +17,17 @@
                 </Label>
             </VerticalStackLayout>
 
-            <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End" Opacity="0.9" BackgroundColor="Transparent">
+            <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End">
 
                 <Button Margin="20"
-                    x:Name="CounterBtn"
-                    Text="Ping"
-                    VerticalOptions="End"
-                    Clicked="OnCounterClicked"/>
+                        Command="{Binding PingAllCommand}"
+                        Text="Ping"
+                        VerticalOptions="End"/>
 
                 <Button Margin="20"
-                    Text="Stop"
-                    VerticalOptions="End"/>
+                        Command="{Binding PingAllCommand}"
+                        Text="Stop"
+                        VerticalOptions="End"/>
 
             </HorizontalStackLayout>
 

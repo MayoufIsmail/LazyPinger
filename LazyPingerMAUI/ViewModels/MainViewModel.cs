@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
 using System.Collections.ObjectModel;
@@ -30,6 +31,12 @@ namespace LazyPingerMAUI.ViewModels
             for (int i = 0; i < 50; i++) {
                 DetectedDevices.Add(temp);
             }
+        }
+
+        [RelayCommand]
+        public Task PingAll()
+        {
+            return Task.CompletedTask;
         }
     }
 }
