@@ -1,4 +1,5 @@
 ﻿using LazyPinger.Base.IServices;
+using LazyPinger.Core.Utils;
 using LazyPingerMAUI.ViewModels;
 
 namespace LazyPingerMAUI.Views
@@ -7,16 +8,27 @@ namespace LazyPingerMAUI.Views
     {
         private INetworkService _networkService { get; set; }
 
+        private MainViewModel _mainViewModel { get; set; }
+
         public MainPage(INetworkService networkService)
         {
             InitializeComponent();
-            _networkService = networkService;
-            this.BindingContext = new MainViewModel(networkService);
-        }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-           // SemanticScreenReader.Announce(CounterBtn.Text);
+            _networkService = networkService;
+            _mainViewModel = new MainViewModel(networkService);
+
+            this.BindingContext = _mainViewModel;
+
+            Task.Run(async () => {
+                await Task.Delay(_mainViewModel.AnimationHandler.WaitTimeToHideLogo);
+
+                var tempAnimHandler = new AnimationHandler();
+                tempAnimHandler.DevicesRowSpan = 2;
+                tempAnimHandler.DevicesRow = 0;
+                tempAnimHandler.IsTopLogoVisible = false;
+
+                _mainViewModel.AnimationHandler = tempAnimHandler;
+            });
         }
     }
 
