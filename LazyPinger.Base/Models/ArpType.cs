@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace IdeeControl.Scripts.Services.Network;
+﻿namespace LazyPinger.Base.Models;
 
 public class ArpType
 {

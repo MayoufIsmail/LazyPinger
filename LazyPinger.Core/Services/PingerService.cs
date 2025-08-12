@@ -1,4 +1,4 @@
-﻿using LazyPinger.Core.Models;
+﻿using LazyPinger.Base.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +7,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
+using LazyPinger.Base.Services;
 
 namespace LazyPinger.Core.Services
 {

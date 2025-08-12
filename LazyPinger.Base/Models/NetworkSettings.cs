@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LazyPinger.Core.Models
+namespace LazyPinger.Base.Models
 {
     public class NetworkSettings
     {
