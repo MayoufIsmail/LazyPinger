@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace LazyPinger.Base.Models
 {
@@ -10,6 +11,8 @@ namespace LazyPinger.Base.Models
         public string Name { get; set; }
 
         public string IpAddress { get; set; }
+
+        public List<IPAddress> HostAddresses { get; set; }
 
         public string SubnetAddress { get; set; }
 

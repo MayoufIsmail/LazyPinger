@@ -3,12 +3,21 @@
     x:Class="LazyPingerMAUI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:LazyPingerMAUI"
+    xmlns:views="clr-namespace:LazyPingerMAUI.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="LazyPingerMAUI">
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />
+
+    <TabBar>
+        <Tab x:Name="MainTab">
+            <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main"/>
+        </Tab>
+        <Tab x:Name="HomeTab">
+            <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main"/>
+        </Tab>
+    </TabBar>
 
 </Shell>

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
 using System.Collections.ObjectModel;
 
@@ -9,7 +10,7 @@ namespace LazyPingerMAUI.ViewModels
         [ObservableProperty]
         private ObservableCollection<DevicePing> detectedDevices = new();
 
-        public MainViewModel()
+        public MainViewModel(INetworkService networkService)
         {
             InitDummyDevices();
         }
@@ -26,7 +27,7 @@ namespace LazyPingerMAUI.ViewModels
                 Port = 50,
             };
 
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 50; i++) {
                 DetectedDevices.Add(temp);
             }
         }

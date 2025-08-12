@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:LazyPingerMAUI.Views"
              xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
-             x:Class="LazyPingerMAUI.MainPage">
+             x:Class="LazyPingerMAUI.Views.MainPage">
 
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*">

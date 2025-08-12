@@ -1,15 +1,28 @@
 ﻿using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 
 namespace LazyPinger.Core.Services
 {
     public class NetworkService : INetworkService
     {
-        public NetworkSettings NetworkSettings { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public NetworkSettings NetworkSettings { get; set; } = new();
+
+        public NetworkService() 
+        {
+            _ = InitNetworkSettings();
+        }
+
+        private async Task InitNetworkSettings()
+        {
+           var res = await GetHostIPs();
+           NetworkSettings.HostAddresses = res.ToList();
+        }
+
+        public async Task<IPAddress[]> GetHostIPs()
+        {
+            var ipHostInfo = await Dns.GetHostEntryAsync(Dns.GetHostName());
+            return ipHostInfo.AddressList;
+        }
     }
 }

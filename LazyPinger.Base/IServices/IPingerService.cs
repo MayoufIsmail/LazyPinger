@@ -13,8 +13,6 @@ namespace LazyPinger.Base.Services
 
         public Task<TcpListener> StartServer(string selectedIP, int selectedPort);
 
-        public Task<IPAddress[]> GetHostIPs();
-
         public Task<bool> PingAll(ref ObservableCollection<DevicePing> foundDevices);
 
         public List<String> GetMacAddresses();

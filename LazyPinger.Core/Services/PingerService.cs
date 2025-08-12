@@ -52,12 +52,6 @@ namespace LazyPinger.Core.Services
             return null!;
         }
 
-        public async Task<IPAddress[]> GetHostIPs()
-        {
-            IPHostEntry ipHostInfo = await Dns.GetHostEntryAsync(Dns.GetHostName());
-            return ipHostInfo.AddressList;
-        }
-
         public Task<bool> PingAll(ref ObservableCollection<DevicePing> foundDevices)
         {
             _ = PingAllAsync(foundDevices);
