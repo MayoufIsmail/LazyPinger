@@ -1,8 +1,6 @@
-﻿using IdeeControl.Scripts.Enums;
-using IdeeControl.Scripts.Services.IPHlp;
-using IdeeControl.Scripts.Services.Logger;
-using LazyPinger.Core.Services;
-using Microsoft.VisualBasic.FileIO;
+﻿using LazyPinger.Base.Models;
+using LazyPinger.Base.Services;
+using LazyPinger.Core.IPHlp;
 using System.Net;
 using System.Text.RegularExpressions;
 
@@ -15,7 +13,7 @@ public class ArpDetectorService : IArpDetectorService
     private string IpAddressToPing;
     public ArpType ArpType = new();
     
-    public ArpDetector(string ipAddressToPing)
+    public ArpDetectorService(string ipAddressToPing)
     {
         MacList = MacLoader(MacFileName);
         IpAddressToPing = ipAddressToPing;
@@ -48,7 +46,6 @@ public class ArpDetectorService : IArpDetectorService
         try
         {
             Console.WriteLine("IP HOST FINDER : "+ IpAddressToPing);
-            ConsoleLogger<string>.Log("IP HOST FINDER : "+ IpAddressToPing, LogType.Info);
 
             var foundIP = IpAddressToPing;
             var res = Dns.GetHostByAddress(foundIP);
@@ -56,7 +53,7 @@ public class ArpDetectorService : IArpDetectorService
         }
         catch (Exception e)
         {
-            ConsoleLogger<string>.Log("Host Finder in ArpDetector Failed on IP¨: " + IpAddressToPing +" " + e.Message, LogType.Error);
+
         }
 
         return "Unknown";
