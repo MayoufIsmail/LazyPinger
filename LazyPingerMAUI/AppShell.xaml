@@ -16,7 +16,7 @@
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main"/>
         </Tab>
         <Tab Title="Settings" x:Name="SettingsTab">
-            <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main"/>
+            <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" Route="settings"/>
         </Tab>
     </TabBar>
 

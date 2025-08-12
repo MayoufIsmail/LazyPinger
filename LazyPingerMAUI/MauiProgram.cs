@@ -41,9 +41,10 @@ namespace LazyPingerMAUI
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddTransient<MainViewModel>();
+            mauiAppBuilder.Services.AddTransient<SettingsViewModel>();
 
             mauiAppBuilder.Services.AddTransient<MainPage>();
-
+            mauiAppBuilder.Services.AddTransient<SettingsPage>();
             return mauiAppBuilder;
         }
     }

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:LazyPingerMAUI.Views"
+             xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
+             x:Class="LazyPingerMAUI.Views.SettingsPage">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*">
+            <VerticalStackLayout Grid.Row="0" 
+                                 HorizontalOptions="Fill"
+                                 Padding="20"
+                                 Background="{StaticResource Tertiary}">
+                <Label Style="{StaticResource Headline}" 
+                       TextColor="{StaticResource Primary}"
+                       Text="LazyPinger, as lazy as possible ">
+                </Label>
+            </VerticalStackLayout>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
