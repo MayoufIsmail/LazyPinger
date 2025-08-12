@@ -20,14 +20,21 @@ namespace LazyPingerMAUI.Views
             this.BindingContext = _mainViewModel;
 
             Task.Run(async () => {
+                await Task.Delay(_mainViewModel.AnimationHandler.WaitTimeSplashView);
+
+                _mainViewModel.AnimationHandler = new AnimationHandler()
+                {
+                    IsSplashViewVisible = false,
+                };
+
                 await Task.Delay(_mainViewModel.AnimationHandler.WaitTimeToHideLogo);
 
-                var tempAnimHandler = new AnimationHandler();
-                tempAnimHandler.DevicesRowSpan = 2;
-                tempAnimHandler.DevicesRow = 0;
-                tempAnimHandler.IsTopLogoVisible = false;
-
-                _mainViewModel.AnimationHandler = tempAnimHandler;
+                _mainViewModel.AnimationHandler = new AnimationHandler()
+                {
+                    DevicesRowSpan = 2,
+                    DevicesRow = 0,
+                    IsTopLogoVisible = false
+                };
             });
         }
     }

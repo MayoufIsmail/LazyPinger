@@ -7,44 +7,57 @@
              x:Class="LazyPingerMAUI.Views.MainPage"
              x:DataType="vm:MainViewModel">
 
-    <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*">
-            <VerticalStackLayout Grid.Row="0" 
-                                 IsVisible="{Binding AnimationHandler.IsTopLogoVisible}"
-                                 HorizontalOptions="Fill"
-                                 Padding="20"
-                                 Background="{StaticResource Tertiary}">
-                <Label Style="{StaticResource Headline}" 
-                       TextColor="{StaticResource Primary}"
-                       Text="LazyPinger, as lazy as possible ">
-                </Label>
-            </VerticalStackLayout>
+    <Grid>
+        <ScrollView>
+            <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*">
 
-            <HorizontalStackLayout Grid.Row="{Binding AnimationHandler.DevicesRow}"
-                                   Grid.RowSpan="{Binding AnimationHandler.DevicesRowSpan}"
-                                   HorizontalOptions="Center" 
-                                   VerticalOptions="End">
+                <VerticalStackLayout Grid.Row="0" 
+                             IsVisible="{Binding AnimationHandler.IsTopLogoVisible}"
+                             HorizontalOptions="Fill"
+                             Padding="20"
+                             Background="{StaticResource Tertiary}">
+                    <Label Style="{StaticResource Headline}" 
+                   TextColor="{StaticResource Primary}"
+                   Text="LazyPinger, as lazy as possible ">
+                    </Label>
+                </VerticalStackLayout>
 
-                <Button Margin="20"
-                        Command="{Binding PingAllCommand}"
-                        Text="Ping"
-                        VerticalOptions="End"/>
+                <HorizontalStackLayout Grid.Row="{Binding AnimationHandler.DevicesRow}"
+                               Grid.RowSpan="{Binding AnimationHandler.DevicesRowSpan}"
+                               HorizontalOptions="Center" 
+                               VerticalOptions="End">
 
-                <Button Margin="20"
-                        Command="{Binding PingAllCommand}"
-                        Text="Stop"
-                        VerticalOptions="End"/>
+                    <Button Margin="20"
+                    Command="{Binding PingAllCommand}"
+                    Text="Ping"
+                    VerticalOptions="End"/>
 
-            </HorizontalStackLayout>
+                    <Button Margin="20"
+                    Command="{Binding PingAllCommand}"
+                    Text="Stop"
+                    VerticalOptions="End"/>
 
-            <CollectionView Grid.Row="2" ItemsSource="{Binding DetectedDevices}" ItemsLayout="VerticalGrid,3">
+                </HorizontalStackLayout>
+
+                <CollectionView Grid.Row="2" ItemsSource="{Binding DetectedDevices}" ItemsLayout="VerticalGrid,3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:DevicePing">
                             <views:DeviceView DevicePing="{Binding}"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-             </CollectionView>
+                </CollectionView>
+
+            </Grid>
+        </ScrollView>
+
+        <Grid IsVisible="{Binding AnimationHandler.IsSplashViewVisible}" 
+              Background="{StaticResource Gray900}"
+              Opacity="0.9"
+              BackgroundColor="{StaticResource Gray900}">
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Made by lazy people for faster processing.."/>
+            <ActivityIndicator HorizontalOptions="Center" IsRunning="true" />
         </Grid>
-    </ScrollView>
+    </Grid>
+    
 
 </ContentPage>
