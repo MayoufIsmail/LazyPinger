@@ -4,6 +4,7 @@
              xmlns:views="clr-namespace:LazyPingerMAUI.Views"
              xmlns:vm="clr-namespace:LazyPingerMAUI.ViewModels"
              xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
+             xmlns:strings="clr-namespace:LazyPinger.Base.Localization;assembly=LazyPinger.Base"
              x:Class="LazyPingerMAUI.Views.MainPage"
              x:DataType="vm:MainViewModel">
 
@@ -54,8 +55,13 @@
               Background="{StaticResource Gray900}"
               Opacity="0.9"
               BackgroundColor="{StaticResource Gray900}">
-            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Made by lazy people for faster processing.."/>
-            <ActivityIndicator HorizontalOptions="Center" IsRunning="true" />
+
+            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center"> 
+                <Label HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   Text="{x:Static strings:AppResources.SplashEntry}"/>
+                <ActivityIndicator HorizontalOptions="Center" IsRunning="true" />
+            </VerticalStackLayout>
         </Grid>
     </Grid>
     
