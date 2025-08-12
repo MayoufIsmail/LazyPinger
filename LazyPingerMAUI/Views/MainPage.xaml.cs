@@ -33,7 +33,8 @@ namespace LazyPingerMAUI.Views
                 {
                     DevicesRowSpan = 2,
                     DevicesRow = 0,
-                    IsTopLogoVisible = false
+                    IsTopLogoVisible = false,
+                    IsSplashViewVisible = false,
                 };
             });
         }
