@@ -1,22 +1,29 @@
 ﻿using LazyPinger.Base.Models;
 using LazyPinger.Base.Services;
 using LazyPinger.Core.IPHlp;
+using LazyPinger.Core.Services;
 using System.Net;
 using System.Text.RegularExpressions;
 
-namespace IdeeControl.Scripts.Services.Network;
+namespace LazyPinger.Core.Services;
 
 public class ArpDetectorService : IArpDetectorService
 {
     private List<string> MacList = new();
-    private readonly string MacFileName = "ListofMAC.txt";
-    private string IpAddressToPing;
+
     public ArpType ArpType = new();
-    
-    public ArpDetectorService(string ipAddressToPing)
+
+    private IPingerService _pingerService;
+
+    private string IpAddressToPing;
+
+
+    public ArpDetectorService(IPingerService pingerService)
     {
-        MacList = MacLoader(MacFileName);
-        IpAddressToPing = ipAddressToPing;
+        _pingerService = pingerService;
+
+        MacList = MacLoader(_pingerService.NetworkSettings.MacDictionaryFile);
+        IpAddressToPing = _pingerService.NetworkSettings.IpAddress;
     }
     
     public async Task ArpInit()

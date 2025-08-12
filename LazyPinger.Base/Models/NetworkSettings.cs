@@ -15,5 +15,6 @@ namespace LazyPinger.Base.Models
 
         public string GatewayAddress { get; set; }
 
+        public string MacDictionaryFile = "ListofMAC.txt";
     }
 }

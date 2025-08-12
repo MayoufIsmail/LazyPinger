@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using LazyPinger.Core.Models;
+using LazyPinger.Base.Models;
 using System.Collections.ObjectModel;
 
 namespace LazyPingerMAUI.ViewModels
@@ -7,7 +7,7 @@ namespace LazyPingerMAUI.ViewModels
     public partial class MainViewModel : ViewModelBase
     {
         [ObservableProperty]
-        private partial ObservableCollection<DevicePing> DetectedDevices = new();
+        private ObservableCollection<DevicePing> detectedDevices = new();
 
         public MainViewModel()
         {

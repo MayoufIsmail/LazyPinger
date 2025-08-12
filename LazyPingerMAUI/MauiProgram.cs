@@ -1,4 +1,6 @@
-﻿using LazyPinger.Core.Services;
+﻿using IdeeControl.Scripts.Services.Network;
+using LazyPinger.Base.Services;
+using LazyPinger.Core.Services;
 using LazyPingerMAUI.ViewModels;
 using Microsoft.Extensions.Logging;
 
@@ -29,6 +31,8 @@ namespace LazyPingerMAUI
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddSingleton<IPingerService, PingerService>();
+            mauiAppBuilder.Services.AddSingleton<IArpDetectorService, ArpDetectorService>();
+
             return mauiAppBuilder;
         }
 
