@@ -1,5 +1,4 @@
-﻿using IdeeControl.Scripts.Services.Network;
-using LazyPinger.Base.Services;
+﻿using LazyPinger.Base.Services;
 using LazyPinger.Core.Services;
 using LazyPingerMAUI.ViewModels;
 using Microsoft.Extensions.Logging;

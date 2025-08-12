@@ -7,8 +7,6 @@ namespace LazyPinger.Base.Services
 {
     public interface IPingerService
     {
-        public NetworkSettings NetworkSettings { get; set; }
-
         public List<DevicePing> GetDevicesOnSubnet();
 
         public List<DevicePing> GetDevicesOnSubnet(string ipAddress);

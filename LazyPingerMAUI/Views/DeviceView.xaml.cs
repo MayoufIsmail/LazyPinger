@@ -1,4 +1,4 @@
-using LazyPinger.Core.Models;
+using LazyPinger.Base.Models;
 
 namespace LazyPingerMAUI.Views;
 

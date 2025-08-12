@@ -1,4 +1,5 @@
-﻿using LazyPinger.Base.Models;
+﻿using LazyPinger.Base.IServices;
+using LazyPinger.Base.Models;
 using LazyPinger.Base.Services;
 using LazyPinger.Core.IPHlp;
 using LazyPinger.Core.Services;
@@ -10,20 +11,19 @@ namespace LazyPinger.Core.Services;
 public class ArpDetectorService : IArpDetectorService
 {
     private List<string> MacList = new();
+    public ArpType ArpType { get; set; } = new();
 
-    public ArpType ArpType = new();
-
-    private IPingerService _pingerService;
+    private INetworkService _networkService;
 
     private string IpAddressToPing;
 
 
-    public ArpDetectorService(IPingerService pingerService)
+    public ArpDetectorService(INetworkService networkService)
     {
-        _pingerService = pingerService;
+        _networkService = networkService;
 
-        MacList = MacLoader(_pingerService.NetworkSettings.MacDictionaryFile);
-        IpAddressToPing = _pingerService.NetworkSettings.IpAddress;
+        MacList = MacLoader(_networkService.NetworkSettings.MacDictionaryFile);
+        IpAddressToPing = _networkService.NetworkSettings.IpAddress;
     }
     
     public async Task ArpInit()

@@ -1,22 +1,27 @@
 ﻿using LazyPinger.Base.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using LazyPinger.Base.Services;
+using LazyPinger.Base.IServices;
 
 namespace LazyPinger.Core.Services
 {
     public class PingerService : IPingerService
     {
-        public NetworkSettings NetworkSettings { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
         private ObservableCollection<Task> pingTasks = new();
 
+        private INetworkService _networkService;
+
+        private IArpDetectorService _arpDetectorService;
+
+        public PingerService(IArpDetectorService arpDetectorService, INetworkService networkService) 
+        {
+            _arpDetectorService = arpDetectorService;
+            _networkService = networkService; 
+        }
 
         public List<DevicePing> GetDevicesOnSubnet()
         {
@@ -42,7 +47,7 @@ namespace LazyPinger.Core.Services
             }
             catch (Exception e)
             {
-                ConsoleLogger<string>.Log("StartServer failed in NetworkService :" + e, LogType.Error);
+                Console.WriteLine("StartServer failed in NetworkService :" + e);
             }
             return null!;
         }
@@ -86,7 +91,7 @@ namespace LazyPinger.Core.Services
                     continue;
 
                 byte[] bufferReply = { 87, 69, 66, 85, 73 };
-                var ipAddressToPing = NetworkSettings.SubnetAddress + i;
+                var ipAddressToPing = _networkService.NetworkSettings.SubnetAddress + i;
 
                 try
                 {
@@ -95,27 +100,23 @@ namespace LazyPinger.Core.Services
                     if (sendPing.Status == IPStatus.Success &&
                         !foundDevices.Select(o => o.IP).ToList().Contains(sendPing.Address.ToString()))
                     {
-                        ArpDetector arpDetector = new(ipAddressToPing);
-                        await arpDetector.ArpInit();
+                        await _arpDetectorService.ArpInit();
 
-                        ConsoleLogger<string>.Log(
-                            "Found Host : " + arpDetector.ArpType.Host + " On IP : " + ipAddressToPing, LogType.Info);
+                        Console.WriteLine("Found Host : " + _arpDetectorService.ArpType.Host + " On IP : " + ipAddressToPing);
 
-                        Console.WriteLine("Found Host : " + arpDetector.ArpType.Host + " On IP : " + ipAddressToPing);
-
-                        foundDevices.Add(new DevicePing()
-                        {
-                            Name = arpDetector.ArpType.Host,
-                            ID = foundDevices.Count,
-                            IP = sendPing.Address.ToString(),
-                            MAC = arpDetector.ArpType.MAC,
-                            Type = arpDetector.ArpType.Type,
-                        });
+                        //foundDevices.Add(new DevicePing()
+                        //{
+                        //    Name = arpDetector.ArpType.Host,
+                        //    ID = foundDevices.Count,
+                        //    IP = sendPing.Address.ToString(),
+                        //    MAC = arpDetector.ArpType.MAC,
+                        //    Type = arpDetector.ArpType.Type,
+                        //});
                     }
                 }
                 catch (Exception e)
                 {
-                    ConsoleLogger<string>.Log("PingIP in NetworkService Failed : " + e, LogType.Error);
+                    Console.WriteLine("PingIP in NetworkService Failed : " + e);
                 }
             }
         }
@@ -155,7 +156,7 @@ namespace LazyPinger.Core.Services
             }
             catch (Exception e)
             {
-                ConsoleLogger<Exception>.Log(e, LogType.Error);
+                Console.WriteLine(e);
                 return false;
             }
         }
@@ -176,7 +177,7 @@ namespace LazyPinger.Core.Services
             }
             catch (Exception e)
             {
-                ConsoleLogger<Exception>.Log(e, LogType.Error);
+                Console.WriteLine(e);
                 return false;
             }
         }
@@ -194,7 +195,7 @@ namespace LazyPinger.Core.Services
             }
             catch (Exception e)
             {
-                ConsoleLogger<Exception>.Log(e, LogType.Error);
+                Console.WriteLine(e);
                 return false;
             }
         }
