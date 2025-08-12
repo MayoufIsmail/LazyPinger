@@ -7,7 +7,7 @@ namespace LazyPingerMAUI.ViewModels
     public partial class MainViewModel : ViewModelBase
     {
         [ObservableProperty]
-        private ObservableCollection<DevicePing> detectedDevices = new();
+        private partial ObservableCollection<DevicePing> DetectedDevices = new();
 
         public MainViewModel()
         {
@@ -26,7 +26,7 @@ namespace LazyPingerMAUI.ViewModels
                 Port = 50,
             };
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 2; i++) {
                 DetectedDevices.Add(temp);
             }
         }

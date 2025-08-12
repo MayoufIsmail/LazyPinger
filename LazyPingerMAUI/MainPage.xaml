@@ -31,11 +31,7 @@
 
             </HorizontalStackLayout>
 
-            <CollectionView Grid.Row="2" ItemsSource="{Binding DetectedDevices}">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical"
-                         Span="3"/>
-                    </CollectionView.ItemsLayout>
+            <CollectionView Grid.Row="2" ItemsSource="{Binding DetectedDevices}" ItemsLayout="VerticalGrid,3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:DevicePing">
                             <views:DeviceView DevicePing="{Binding}"/>
