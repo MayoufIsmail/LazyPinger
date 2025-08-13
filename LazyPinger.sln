@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyPinger.Core", "LazyPing
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyPinger.Base", "LazyPinger.Base\LazyPinger.Base.csproj", "{AC5C2778-BD65-4D5A-BEAC-F9644B98A32C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyPinger.Tests", "LazyPinger.Tests\LazyPinger.Tests.csproj", "{77D1F879-B170-49B4-9FDB-50ED70EB5D16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,8 +31,15 @@ Global
 		{AC5C2778-BD65-4D5A-BEAC-F9644B98A32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC5C2778-BD65-4D5A-BEAC-F9644B98A32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC5C2778-BD65-4D5A-BEAC-F9644B98A32C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D1F879-B170-49B4-9FDB-50ED70EB5D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D1F879-B170-49B4-9FDB-50ED70EB5D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D1F879-B170-49B4-9FDB-50ED70EB5D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D1F879-B170-49B4-9FDB-50ED70EB5D16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F8CD6AB-2478-4573-863A-6E837D70BD28}
 	EndGlobalSection
 EndGlobal
