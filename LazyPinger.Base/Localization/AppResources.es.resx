@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LazySlogan" xml:space="preserve">
-    <value>Hola senior</value>
+    <value>LazyPinger, as lazy as possible</value>
   </data>
   <data name="SplashEntry" xml:space="preserve">
     <value>Made by lazy people for faster processing..</value>
