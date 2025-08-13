@@ -17,10 +17,10 @@ namespace LazyPingerMAUI.ViewModels
 
         public MainViewModel(INetworkService networkService)
         {
-            InitDummyDevices();
+            MainThread.InvokeOnMainThreadAsync(() => InitDummyDevices());
         }
 
-        private void InitDummyDevices()
+        private async Task InitDummyDevices()
         {
             var temp = new DevicePing
             {
@@ -32,8 +32,9 @@ namespace LazyPingerMAUI.ViewModels
                 Port = 50,
             };
 
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < 1000; i++) {
                 DetectedDevices.Add(temp);
+                await Task.Delay(500);
             }
         }
 
