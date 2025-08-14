@@ -5,6 +5,7 @@ using LazyPinger.Base.Models;
 using LazyPinger.Core.Services;
 using LazyPinger.Core.Utils;
 using System.Collections.ObjectModel;
+using System.Net.Sockets;
 
 namespace LazyPingerMAUI.ViewModels
 {
@@ -29,7 +30,7 @@ namespace LazyPingerMAUI.ViewModels
         {
             MainThread.InvokeOnMainThreadAsync(async () => {
                  await networkService.InitNetworkSettings();
-                 var addresses = networkService.NetworkSettings.HostAddresses.Select(o => o.ToString());
+                 var addresses = networkService.NetworkSettings.HostAddresses.Where(o => o.AddressFamily == AddressFamily.InterNetwork).Select(o => o.ToString());
                  DetectedNetworkInterfaces = new ObservableCollection<string>(addresses);
                  await InitDummyDevices();
             });

@@ -25,33 +25,40 @@
 
                 <FlexLayout Grid.Row="{Binding AnimationHandler.DevicesRow}"
                             Grid.RowSpan="{Binding AnimationHandler.DevicesRowSpan}"
+                            Margin="15"
                             FlexLayout.Grow="1"
                             VerticalOptions="End">
 
                     <Picker FlexLayout.Grow="1"
+                            Title="Select your network interface"
                             ItemsSource="{Binding DetectedNetworkInterfaces}">
                     </Picker>
 
-                    <Picker FlexLayout.Grow="1"
-                            ItemsSource="{Binding DetectedNetworkInterfaces}">
-                    </Picker>
+                    <VerticalStackLayout FlexLayout.Grow="1">
+                        <Label Text="Select your range"/>
 
+                        <Entry Keyboard="Numeric"
+                               Placeholder="Min Range - 0" />
+
+                        <Entry Keyboard="Numeric"
+                               Placeholder="Max Range - 255" />    
+                    </VerticalStackLayout>
+         
                     <HorizontalStackLayout>
-                        <Button Margin="20"
-                              Command="{Binding PingAllCommand}"
-                              Text="Ping"
-                              VerticalOptions="End"/>
+                            <Button Margin="20"
+                                    Command="{Binding PingAllCommand}"
+                                    Text="Ping"
+                                    VerticalOptions="End"/>
 
                             <Button Margin="20"
-                              Command="{Binding PingAllCommand}"
-                              Text="Stop"
-                              VerticalOptions="End"/>   
+                                    Command="{Binding PingAllCommand}"
+                                    Text="Stop"
+                                    VerticalOptions="End"/>
                     </HorizontalStackLayout>
-      
-
                 </FlexLayout>
 
-                <CollectionView Grid.Row="2" ItemsSource="{Binding DetectedDevices}" 
+                <CollectionView Grid.Row="2" 
+                                ItemsSource="{Binding DetectedDevices}" 
                                 ItemsLayout="VerticalGrid, 3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:DevicePing">
@@ -63,7 +70,7 @@
             </Grid>
         </ScrollView>
 
-        <Grid IsVisible="{Binding AnimationHandler.IsSplashViewVisible}" 
+        <Grid IsVisible="{Binding AnimationHandler.IsGreyVisible}" 
               Background="{StaticResource Gray900}"
               Opacity="0.9"
               BackgroundColor="{StaticResource Gray900}">
@@ -73,6 +80,23 @@
                    VerticalOptions="Center" 
                    Text="{x:Static strings:AppResources.SplashEntry}"/>
                 <ActivityIndicator HorizontalOptions="Center" IsRunning="true" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <Grid IsVisible="{Binding AnimationHandler.IsSplashVisible}"
+                             BackgroundColor="{StaticResource Gray950}">
+
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label VerticalOptions="Center" 
+                   HorizontalOptions="Center" 
+                   Text="{Binding AnimationHandler.SplashRandomText}"></Label>
+
+                <Image Source="lazy_pinger_logo.png" 
+                   VerticalOptions="Center" 
+                          Aspect="AspectFit"
+                           WidthRequest="100"
+                           HeightRequest="100"
+                           HorizontalOptions="Center"/>
             </VerticalStackLayout>
         </Grid>
     </Grid>

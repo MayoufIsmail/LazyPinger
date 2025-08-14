@@ -9,16 +9,22 @@ namespace LazyPinger.Core.Utils
 {
     public class AnimationHandler
     {
-        public int WaitTimeSplashView { get; set; } = 5000;
+        public int WaitTimeToHideGrey { get; set; } = 1000;
 
-        public int WaitTimeToHideLogo { get; set; } = 4000;
+        public int WaitTimeToHideLogo { get; set; } = 5000;
+
+        public int WaitTimeToHideSplash { get; set; } = 2000;
+
+        public bool IsGreyVisible { get; set; } = true;
 
         public bool IsTopLogoVisible { get; set; } = true;
 
-        public bool IsSplashViewVisible { get; set; } = true;
+        public bool IsSplashVisible { get; set; } = true;
 
         public int DevicesRow { get; set; } = 1;
 
         public int DevicesRowSpan { get; set; } = 1;
+
+        public string SplashRandomText { get; set; } = "Want to ping fast ?";
     }
 }
