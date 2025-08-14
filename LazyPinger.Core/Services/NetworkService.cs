@@ -1,28 +1,109 @@
 ﻿using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
+using System.Collections.ObjectModel;
 using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 
 namespace LazyPinger.Core.Services
 {
     public class NetworkService : INetworkService
     {
+        private List<Task> pingTaskList = new List<Task>();
         public NetworkSettings NetworkSettings { get; set; } = new();
 
-        public NetworkService() 
+        public NetworkService()
         {
-            
+
         }
 
         public async Task InitNetworkSettings()
         {
-           var res = await GetHostIPs();
-           NetworkSettings.HostAddresses = res.ToList();
+            var res = await GetHostIPs();
+            NetworkSettings.HostAddresses = res.ToList();
         }
 
         public async Task<IPAddress[]> GetHostIPs()
         {
             var ipHostInfo = await Dns.GetHostEntryAsync(Dns.GetHostName());
             return ipHostInfo.AddressList;
+        }
+
+        public async Task<TcpListener?> StartServer(string selectedIP, int selectedPort)
+        {
+            await Task.Run(() =>
+            {
+                var serverIP = IPAddress.Parse(selectedIP);
+                var server = new TcpListener(serverIP, selectedPort);
+                server.Start();
+                return server;
+            });
+            return null;
+        }
+
+        public Task<bool> PingAll(ref ObservableCollection<DevicePing> foundDevices)
+        {
+            _ = PingAllAsync(foundDevices);
+            return Task.FromResult(true);
+        }
+
+        public List<string> GetMacAddresses()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SendUdpMessage(string selectedIP, string messageToSedn, int defaultPort)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> PingAllAsync(ObservableCollection<DevicePing> foundDevices)
+        {
+            PingTaskPoolCreator(128, 256, ref foundDevices);
+            await Task.WhenAll(pingTaskList);
+            return true;
+        }
+
+        private void PingTaskPoolCreator(int numTasks, int maxSubnet, ref ObservableCollection<DevicePing> foundDevices)
+        {
+            var it = 1;
+
+            while (it < numTasks)
+            {
+                pingTaskList.Add(PingIP(maxSubnet / numTasks * (it - 1), maxSubnet / numTasks * it, foundDevices));
+                it++;
+            }
+        }
+
+        private async Task PingIP(int fromIP, int toIP, ObservableCollection<DevicePing> foundDevices)
+        {
+            var ping = new Ping();
+
+            for (int i = fromIP; i < toIP; i++)
+            {
+
+                if (i == 255)
+                    continue;
+
+                byte[] bufferReply = { 00 };
+                var ipAddressToPing = NetworkSettings.SubnetAddress + i;
+
+                var sendPing = await ping.SendPingAsync(ipAddressToPing, 1, bufferReply);
+
+                if (sendPing.Status != IPStatus.Success)
+                    return;
+
+                //var arpDetector = new(ipAddressToPing)
+                //await ArpDetectorService.ArpInit();
+                foundDevices.Add(new DevicePing()
+                {
+                    ID = foundDevices.Count,
+                    Name = "Device" + i,
+                    IP = sendPing.Address.ToString(),
+                    MacAddress = "FF:AA:BB:CC",
+                    Type = "Unknown"
+                });
+            }
         }
     }
 }

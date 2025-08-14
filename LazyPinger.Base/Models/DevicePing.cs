@@ -21,6 +21,8 @@ namespace LazyPinger.Base.Models
         [Required]
         public string MacAddress { get; set; }
 
+        [Required]
+        public string Type { get; set; }
 
     }
 }

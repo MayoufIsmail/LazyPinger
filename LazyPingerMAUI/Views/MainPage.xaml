@@ -71,7 +71,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
             </Grid>
         </ScrollView>
 
@@ -97,7 +96,7 @@
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Label VerticalOptions="Center" 
                    HorizontalOptions="Center" 
-                   Text="{Binding AnimationHandler.SplashRandomText}"></Label>
+                   Text="{Binding AnimationHandler.SplashRandomText}"/>
 
                 <Image Source="lazy_pinger_logo.png" 
                    VerticalOptions="Center" 
