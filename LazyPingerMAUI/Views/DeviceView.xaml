@@ -18,10 +18,10 @@
                              Grid.Row="1" 
                              Margin="20"
                              x:DataType="models:DevicePing">
-                    <Label Text="{Binding Name, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding IP, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding Name, StringFormat=Name: {0}, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding IP, StringFormat=IP: {0}FallbackValue='Device Name'}"/>
                     <Label Text="{Binding Description, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding MacAddress, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding MacAddress,StringFormat=MAC: {0} FallbackValue='Device Name'}"/>
                     <Label Text="{Binding Port, FallbackValue='Device Name'}"/>
                 </StackLayout>
 

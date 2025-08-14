@@ -18,29 +18,41 @@
                              Padding="20"
                              Background="{StaticResource Tertiary}">
                     <Label Style="{StaticResource Headline}" 
-                   TextColor="{StaticResource Primary}"
-                   Text="{x:Static strings:AppResources.LazySlogan}">
+                           TextColor="{StaticResource Primary}"
+                           Text="{x:Static strings:AppResources.LazySlogan}">
                     </Label>
                 </VerticalStackLayout>
 
-                <HorizontalStackLayout Grid.Row="{Binding AnimationHandler.DevicesRow}"
-                               Grid.RowSpan="{Binding AnimationHandler.DevicesRowSpan}"
-                               HorizontalOptions="Center" 
-                               VerticalOptions="End">
+                <FlexLayout Grid.Row="{Binding AnimationHandler.DevicesRow}"
+                            Grid.RowSpan="{Binding AnimationHandler.DevicesRowSpan}"
+                            FlexLayout.Grow="1"
+                            VerticalOptions="End">
 
-                    <Button Margin="20"
-                    Command="{Binding PingAllCommand}"
-                    Text="Ping"
-                    VerticalOptions="End"/>
+                    <Picker FlexLayout.Grow="1"
+                            ItemsSource="{Binding DetectedNetworkInterfaces}">
+                    </Picker>
 
-                    <Button Margin="20"
-                    Command="{Binding PingAllCommand}"
-                    Text="Stop"
-                    VerticalOptions="End"/>
+                    <Picker FlexLayout.Grow="1"
+                            ItemsSource="{Binding DetectedNetworkInterfaces}">
+                    </Picker>
 
-                </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Button Margin="20"
+                              Command="{Binding PingAllCommand}"
+                              Text="Ping"
+                              VerticalOptions="End"/>
 
-                <CollectionView Grid.Row="2" ItemsSource="{Binding DetectedDevices}" ItemsLayout="VerticalGrid, 3">
+                            <Button Margin="20"
+                              Command="{Binding PingAllCommand}"
+                              Text="Stop"
+                              VerticalOptions="End"/>   
+                    </HorizontalStackLayout>
+      
+
+                </FlexLayout>
+
+                <CollectionView Grid.Row="2" ItemsSource="{Binding DetectedDevices}" 
+                                ItemsLayout="VerticalGrid, 3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:DevicePing">
                             <views:DeviceView DevicePing="{Binding}"/>
