@@ -10,7 +10,7 @@ namespace LazyPinger.Core.Services
 
         public NetworkService() 
         {
-            _ = InitNetworkSettings();
+            
         }
 
         public async Task InitNetworkSettings()

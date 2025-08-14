@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
+using LazyPinger.Core.Services;
 using LazyPinger.Core.Utils;
 using System.Collections.ObjectModel;
 
@@ -13,11 +14,25 @@ namespace LazyPingerMAUI.ViewModels
         private ObservableCollection<DevicePing> detectedDevices = new();
 
         [ObservableProperty]
+        private ObservableCollection<string> detectedNetworkInterfaces = new();
+
+        [ObservableProperty]
         public AnimationHandler animationHandler = new();
 
         public MainViewModel(INetworkService networkService)
         {
-            MainThread.InvokeOnMainThreadAsync(() => InitDummyDevices());
+            InitMainVm(networkService);
+            //this.networkService = networkService;
+        }
+
+        private void InitMainVm(INetworkService networkService)
+        {
+            MainThread.InvokeOnMainThreadAsync(async () => {
+                 await networkService.InitNetworkSettings();
+                 var addresses = networkService.NetworkSettings.HostAddresses.Select(o => o.ToString());
+                 DetectedNetworkInterfaces = new ObservableCollection<string>(addresses);
+                 await InitDummyDevices();
+            });
         }
 
         private async Task InitDummyDevices()
