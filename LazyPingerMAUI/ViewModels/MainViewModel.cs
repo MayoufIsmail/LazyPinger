@@ -49,7 +49,7 @@ namespace LazyPingerMAUI.ViewModels
 
             for (int i = 0; i < 1000; i++) {
                 DetectedDevices.Add(temp);
-                await Task.Delay(500);
+                await Task.Delay(100);
             }
         }
 

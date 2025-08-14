@@ -18,8 +18,17 @@ namespace LazyPingerMAUI
                 .RegisterViewModels()
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("NotoSans-Regular.ttf", "NotoSans");
+                    fonts.AddFont("NotoSans-Semibold.ttf", "NotoSansSemiBold");
+                    fonts.AddFont("NotoSans-Medium.ttf", "NotoSansMedium");
+                    fonts.AddFont("NotoSans-Light.ttf", "NotoSansLight");
+                    fonts.AddFont("NotoSans-Bold.ttf", "NotoSansBold");
+                    fonts.AddFont("NotoSans-Black.ttf", "NotoSansBlack");
+                    fonts.AddFont("NotoSans-Italic.ttf", "NotoSansItalic");
+                    fonts.AddFont("NotoSans-Bolditalic.ttf", "NotoSansBoldItalic");
+                    fonts.AddFont("NotoSans_Condensed-Black.ttf", "NotoSansCondensedBlack");
+                    fonts.AddFont("NotoSans_Condensed-BoldItalic.ttf", "NotoSansCondensedBoldItalic");
+                    fonts.AddFont("NotoSans_Condensed-BlackItalic.ttf", "NotoSansCondensedBlackItalic");
                 });
 
 #if DEBUG
