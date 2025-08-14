@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
-using LazyPinger.Core.Services;
 using LazyPinger.Core.Utils;
 using System.Collections.ObjectModel;
 using System.Net.Sockets;

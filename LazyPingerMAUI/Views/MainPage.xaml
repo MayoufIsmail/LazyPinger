@@ -9,8 +9,11 @@
              x:DataType="vm:MainViewModel">
 
     <Grid>
+        
+        <!-- MAIN -->
+
         <ScrollView>
-            <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*">
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="*">
 
                 <VerticalStackLayout Grid.Row="0" 
                              IsVisible="{Binding AnimationHandler.IsTopLogoVisible}"
@@ -43,21 +46,23 @@
                         <Entry Keyboard="Numeric"
                                Placeholder="Max Range - 255" />    
                     </VerticalStackLayout>
-         
-                    <HorizontalStackLayout>
-                            <Button Margin="20"
-                                    Command="{Binding PingAllCommand}"
-                                    Text="Ping"
-                                    VerticalOptions="End"/>
-
-                            <Button Margin="20"
-                                    Command="{Binding PingAllCommand}"
-                                    Text="Stop"
-                                    VerticalOptions="End"/>
-                    </HorizontalStackLayout>
                 </FlexLayout>
 
-                <CollectionView Grid.Row="2" 
+                <FlexLayout Grid.Row="2">
+                    <Button Margin="5"
+                            Command="{Binding PingAllCommand}"
+                            Text="Ping"
+                            FlexLayout.Grow="1"/>
+
+                    <Button Margin="5"
+                            Command="{Binding PingAllCommand}"
+                            Text="Stop"
+                            FlexLayout.Grow="1"/>
+                </FlexLayout>
+
+                <!-- DEVICES -->
+                
+                <CollectionView Grid.Row="3" 
                                 ItemsSource="{Binding DetectedDevices}" 
                                 ItemsLayout="VerticalGrid, 3">
                     <CollectionView.ItemTemplate>
@@ -70,6 +75,9 @@
             </Grid>
         </ScrollView>
 
+        
+        <!-- SPLASH -->
+        
         <Grid IsVisible="{Binding AnimationHandler.IsGreyVisible}" 
               Background="{StaticResource Gray900}"
               Opacity="0.9"
@@ -99,6 +107,7 @@
                            HorizontalOptions="Center"/>
             </VerticalStackLayout>
         </Grid>
+        
     </Grid>
     
 
