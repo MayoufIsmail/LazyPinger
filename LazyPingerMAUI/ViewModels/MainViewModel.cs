@@ -23,6 +23,9 @@ namespace LazyPingerMAUI.ViewModels
         [ObservableProperty]
         public AnimationHandler animationHandler = new();
 
+        [ObservableProperty]
+        public UserSelection userSelection = new();
+
         private INetworkService networkService;
 
         public MainViewModel(INetworkService networkService)

@@ -4,7 +4,7 @@ using LazyPingerMAUI.ViewModels;
 
 namespace LazyPingerMAUI.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
         private INetworkService _networkService { get; set; }
 
