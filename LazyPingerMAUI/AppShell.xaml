@@ -4,23 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:LazyPingerMAUI.Views"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="False" 
     Title="LazyPingerMAUI">
 
     <!--<ShellContent
         ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />-->
 
-    <TabBar>
-        <Tab Title="Home" 
-             FlyoutIcon="lazy_pinger_logo.png"
-             x:Name="MainTab">
+        <FlyoutItem Title="Home"
+                    Icon="lazy_pinger_logo.png"
+                    x:Name="MainTab">
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main"/>
-        </Tab>
-        <Tab Title="Settings" 
+        </FlyoutItem>
+        <FlyoutItem  Title="Settings" 
              x:Name="SettingsTab">
             <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" Route="settings"/>
-        </Tab>
-    </TabBar>
+        </FlyoutItem>
 
 </Shell>
