@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
+using LazyPinger.Core.Services;
 using LazyPinger.Core.Utils;
 using System.Collections.ObjectModel;
 using System.Net.Sockets;
@@ -17,11 +18,17 @@ namespace LazyPingerMAUI.ViewModels
         private ObservableCollection<string> detectedNetworkInterfaces = new();
 
         [ObservableProperty]
+        private string selectedNetworkInterface;
+
+        [ObservableProperty]
         public AnimationHandler animationHandler = new();
+
+        private INetworkService networkService;
 
         public MainViewModel(INetworkService networkService)
         {
             InitMainVm(networkService);
+            this.networkService = networkService;
             //this.networkService = networkService;
         }
 
@@ -31,7 +38,7 @@ namespace LazyPingerMAUI.ViewModels
                  await networkService.InitNetworkSettings();
                  var addresses = networkService.NetworkSettings.HostAddresses.Where(o => o.AddressFamily == AddressFamily.InterNetwork).Select(o => o.ToString());
                  DetectedNetworkInterfaces = new ObservableCollection<string>(addresses);
-                 await InitDummyDevices();
+                 //await InitDummyDevices();
             });
         }
 
@@ -58,5 +65,30 @@ namespace LazyPingerMAUI.ViewModels
         {
             return Task.CompletedTask;
         }
+
+        partial void OnSelectedNetworkInterfaceChanged(string newValue)
+        {
+            detectedDevices.Clear();
+
+            var res = GetSubnetFromIp(newValue);
+
+            if (res is null)
+                return;
+
+            networkService.NetworkSettings.SubnetAddress = res;
+
+            MainThread.InvokeOnMainThreadAsync(async () => {
+                await networkService.PingAll(ref detectedDevices);
+            });
+        }
+
+        private string? GetSubnetFromIp(string ip)
+        {
+            var list = ip.Split('.').ToList();
+            var subnet = "";
+            list.Take(list.Count - 1).ToList().ForEach(o => subnet += $"{o}.");
+            return subnet;
+        }
+
     }
 }

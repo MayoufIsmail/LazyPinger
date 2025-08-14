@@ -32,20 +32,28 @@
                             FlexLayout.Grow="1"
                             VerticalOptions="End">
 
-                    <Picker FlexLayout.Grow="1"
-                            Title="Select your network interface"
-                            ItemsSource="{Binding DetectedNetworkInterfaces}">
-                    </Picker>
-
                     <VerticalStackLayout FlexLayout.Grow="1">
-                        <Label Text="Select your range"/>
+                        <Label Text="Select your network interface" Margin="5, 0, 0, 20"/>
 
-                        <Entry Keyboard="Numeric"
-                               Placeholder="Min Range - 0" />
-
-                        <Entry Keyboard="Numeric"
-                               Placeholder="Max Range - 255" />    
+                        <Picker FlexLayout.Grow="1"
+                                FlexLayout.Shrink="1"
+                                VerticalOptions="Fill"
+                                SelectedItem="{Binding SelectedNetworkInterface}"
+                                ItemsSource="{Binding DetectedNetworkInterfaces}">
+                        </Picker>
                     </VerticalStackLayout>
+
+                    <Grid FlexLayout.Grow="1" RowDefinitions="Auto, Auto" FlexLayout.AlignSelf="Stretch">
+                        <Label Grid.Row="0"  Text="Select your range" Margin="5, 0, 0, 20"/>
+
+                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*,*" Grid.Row="1"> 
+                            <Entry Keyboard="Numeric" Grid.Column="0"
+                            Placeholder="Min Range - 0" />
+
+                            <Entry Keyboard="Numeric" Grid.Column="1"
+                            Placeholder="Max Range - 255" />
+                        </Grid>
+                    </Grid>
                 </FlexLayout>
 
                 <FlexLayout Grid.Row="2">
