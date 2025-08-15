@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:LazyPingerMAUI.Views"
+             xmlns:vm="clr-namespace:LazyPingerMAUI.ViewModels"
+             xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
+             x:Class="LazyPingerMAUI.Views.SettingsPage"
+             x:DataType="vm:SettingsViewModel">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*">
+            <VerticalStackLayout Grid.Row="0" 
+                                 HorizontalOptions="Fill"
+                                 Padding="20"
+                                 Background="{StaticResource Tertiary}">
+                <Label Style="{StaticResource Headline}" 
+                       TextColor="{StaticResource Primary}"
+                       Text="LazyPinger, as lazy as possible ">
+                </Label>
+            </VerticalStackLayout>
+
+            <ScrollView Grid.Row="1">
+                <FlexLayout     Direction="Column"
+                                JustifyContent="Start"
+                                AlignItems="Stretch"
+                                Margin="20">
+
+                    <Border Stroke="{StaticResource Primary}">
+                        <VerticalStackLayout Margin="20">
+                            <Label Style="{StaticResource SubHeadlineAlternative}">Set your settings</Label>
+                            <HorizontalStackLayout Margin="0, 20, 0, 5" VerticalOptions="Center" HorizontalOptions="Center">
+                                <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Fast Ping Mode"/>
+                                <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsFastPingDisabled}"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Margin="0, 20, 0, 20" VerticalOptions="Center" HorizontalOptions="Center">
+                                <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Auto Run Mode"/>
+                                <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsAutoRunDisabled}"/>
+                            </HorizontalStackLayout>
+                            <Button Text="Apply"></Button>
+                        </VerticalStackLayout>
+                    </Border>
+                </FlexLayout>
+            </ScrollView>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
