@@ -10,20 +10,16 @@ namespace LazyPingerMAUI.ViewModels
 {
     public partial class SettingsViewModel : ViewModelBase
     {
-        [ObservableProperty]
-        private ObservableCollection<DevicePing> detectedDevices = new();
+        public MainViewModel MainVm { get; set; }
 
-        [ObservableProperty]
-        public UserSelection userSelection = new();
-
-        public SettingsViewModel(INetworkService networkService)
+        public SettingsViewModel(INetworkService networkService, MainViewModel mainViewModel)
         {
-
+            MainVm = mainViewModel;
         }
 
-        partial void OnUserSelectionChanged(UserSelection newValue)
-        {
+        //partial void OnUserSelectionChanged(UserSelection newValue)
+        //{
             
-        }
+        //}
     }
 }

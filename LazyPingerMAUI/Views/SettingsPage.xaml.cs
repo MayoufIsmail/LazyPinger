@@ -7,12 +7,18 @@ namespace LazyPingerMAUI.Views
     {
         private INetworkService _networkService { get; set; }
 
-        public SettingsPage(INetworkService networkService)
+        private MainViewModel _mainViewModel { get; set; }
+
+
+        public SettingsPage(INetworkService networkService, MainViewModel mainViewModel)
         {
             InitializeComponent();
+            BindingContext = new SettingsViewModel(networkService, mainViewModel);
+
             _networkService = networkService;
-            //this.BindingContext = new MainViewModel(networkService);
+            _mainViewModel = mainViewModel;
         }
+
     }
 
 }

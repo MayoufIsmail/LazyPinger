@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using LazyPingerMAUI.ViewModels;
 
 namespace LazyPinger.Core.Utils
 {
-    public class UserSelection
+    public partial class UserSelection : ViewModelBase
     {
         public int ID {  get; set; }
 
         public string Name { get; set; }
 
-        public bool IsAutoRunEnabled { get; set; }
+        [ObservableProperty]
+        public bool isAutoRunDisabled = false;
 
-        public bool IsFastPingEnabled { get; set; }
+        [ObservableProperty]
+        public bool isFastPingDisabled = true;
+
     }
 }
