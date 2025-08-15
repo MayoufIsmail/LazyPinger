@@ -81,7 +81,6 @@ namespace LazyPinger.Core.Services
 
             for (int i = fromIP; i < toIP; i++)
             {
-
                 if (i == 255)
                     continue;
 

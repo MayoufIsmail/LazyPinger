@@ -1,6 +1,6 @@
 ﻿using LazyPinger.Core.Services;
 
-namespace LazyPinger.Tests
+namespace LazyPinger.Tests.Services
 {
     [TestClass]
     public sealed class NetworkServiceTest
