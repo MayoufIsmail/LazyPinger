@@ -18,6 +18,14 @@ namespace LazyPinger.Base.Models
 
         public string GatewayAddress { get; set; }
 
+
         public string MacDictionaryFile = "ListofMAC.txt";
+
+        public int MinSubnetRange { get; set; } = 0;
+
+        public int MaxSubnetRange { get; set; } = 255;
+
+        public int PingTimeout { get; set; } = 2;
+
     }
 }

@@ -4,6 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <!-- Colors -->
+
     <Color x:Key="Primary">#ff9e7900</Color>
     <Color x:Key="PrimaryDark">#ffc300</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
@@ -12,16 +14,6 @@
     <Color x:Key="Tertiary">#000814</Color>
     <Color x:Key="PrimaryDarkAlternative">#709e7900</Color>
     <Color x:Key="PrimaryDarkSecondAlternative">#50f5da84</Color>
-
-    <LinearGradientBrush x:Key="PrimaryGradient" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="{StaticResource PrimaryDarkAlternative}" Offset="0.0" />
-        <GradientStop Color="{StaticResource PrimaryDarkSecondAlternative}" Offset="1.0" />
-    </LinearGradientBrush>
-    
-    <LinearGradientBrush x:Key="TertiaryGradient" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#000814" Offset="0.0" />
-        <GradientStop Color="#001d3d" Offset="1.0" />
-    </LinearGradientBrush>
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
@@ -35,6 +27,22 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
+    <Color x:Key="Gray700T">#50141414</Color>
+
+
+    <!-- Gradients -->
+    
+    <LinearGradientBrush x:Key="PrimaryGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource PrimaryDarkAlternative}" Offset="0.0" />
+        <GradientStop Color="{StaticResource PrimaryDarkSecondAlternative}" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GreyGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource Gray700T}" Offset="0.0" />
+        <GradientStop Color="{StaticResource Gray950}" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <!-- Brushes -->
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
@@ -52,5 +60,6 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+    <SolidColorBrush x:Key="Gray700TBrush" Color="{StaticResource Gray700T}"/>
 
 </ResourceDictionary>

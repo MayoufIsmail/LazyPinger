@@ -6,7 +6,7 @@
     xmlns:views="clr-namespace:LazyPingerMAUI.Views"
     Shell.FlyoutBehavior="Flyout"
     Shell.NavBarIsVisible="False"
-    Title="LazyPingerMAUI">
+    Title="Lazy Pinger - as fast as possible">
 
     <!--<ShellContent
         ContentTemplate="{DataTemplate views:MainPage}"

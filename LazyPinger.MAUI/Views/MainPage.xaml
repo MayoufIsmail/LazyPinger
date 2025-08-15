@@ -6,10 +6,10 @@
              xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
              xmlns:strings="clr-namespace:LazyPinger.Base.Localization;assembly=LazyPinger.Base"
              x:Class="LazyPingerMAUI.Views.MainPage"
+             Background="{StaticResource GreyGradient}"
              x:DataType="vm:MainViewModel">
 
-    <Grid RowDefinitions="150, *">
-
+    <Grid RowDefinitions="125, *">
 
         <VerticalStackLayout Grid.Row="0" 
                          VerticalOptions="Fill"
@@ -17,15 +17,15 @@
                          Background="{StaticResource Tertiary}">
             <Label Style="{StaticResource Headline}" 
                TextColor="{StaticResource Primary}"
-               Margin="20"
+               Margin="10"
                Text="{x:Static strings:AppResources.LazySlogan}">
             </Label>
         </VerticalStackLayout>
         
         <!-- MAIN -->
 
-        <ScrollView Grid.Row="1" Margin="0, 50, 0, 0">
-            <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="*">
+        <ScrollView Grid.Row="1" Margin="0, 25, 0, 0">
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*">
 
                 <FlexLayout Grid.Row="{Binding AnimationHandler.DevicesRow}"
                             Grid.RowSpan="{Binding AnimationHandler.DevicesRowSpan}"
@@ -44,16 +44,32 @@
                         </Picker>
                     </VerticalStackLayout>
 
-                    <Grid FlexLayout.Grow="1" RowDefinitions="Auto, Auto" FlexLayout.AlignSelf="Stretch">
-                        <Label Grid.Row="0"  Text="Select your range" Margin="5, 0, 0, 20"/>
+                    <Grid FlexLayout.Grow="1" RowDefinitions="Auto, *" ColumnDefinitions="Auto, *" FlexLayout.AlignSelf="Stretch">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Select your range" Margin="5, 0, 20, 20"/>
 
-                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*,*" Grid.Row="1">
-                            <Entry Keyboard="Numeric" Grid.Column="0"
-                            Placeholder="Min Range - 0" />
+                        <Label Grid.Row="0" Grid.Column="1"  Text="Timeout in ms" Margin="20, 0, 0, 20"/>
 
-                            <Entry Keyboard="Numeric" Grid.Column="1"
-                            Placeholder="Max Range - 255" />
+                        <Grid RowDefinitions="Auto, Auto" Margin="0, 0, 20, 0" ColumnDefinitions="*,*" Grid.Column="0" Grid.Row="1">
+                            <Entry Grid.Column="0"
+                                   Keyboard="Numeric" 
+                                   IsEnabled="False"
+                                   Text="{Binding NetworkService.NetworkSettings.MinSubnetRange}"
+                                   Placeholder="Min Range - 0" />
+
+                            <Entry Grid.Column="1"
+                                   Keyboard="Numeric" 
+                                    Text="{Binding NetworkService.NetworkSettings.MinSubnetRange}"
+                                   Placeholder="Max Range - 255" />
                         </Grid>
+
+                        <Entry Keyboard="Numeric" 
+                               Margin="20, 0, 0, 0" 
+                               HorizontalOptions="Fill"
+                               Text="{Binding NetworkService.NetworkSettings.PingTimeout}"
+                               Grid.Row="1"
+                               Grid.Column="1"
+                               Placeholder="10" />
+                        
                     </Grid>
                 </FlexLayout>
 
@@ -74,11 +90,16 @@
                             Command="{Binding PingAllCommand}"
                             Text="Stop"
                             FlexLayout.Grow="1"/>
+
+                </FlexLayout>
+
+                <FlexLayout Margin="10" Grid.Row="3" AlignContent="Center" JustifyContent="Center" AlignItems="Center"> 
+                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding DetectedDevices.Count, StringFormat='Total Devices {0}'}"/>
                 </FlexLayout>
 
                 <!-- DEVICES -->
 
-                <ScrollView Grid.Row="3">
+                <ScrollView Grid.Row="4">
                     <FlexLayout BindableLayout.ItemsSource="{Binding DetectedDevices}"
                                 Wrap="Wrap"
                                 JustifyContent="Center"

@@ -59,18 +59,18 @@ namespace LazyPinger.Core.Services
 
         public async Task<bool> PingAllAsync(ObservableCollection<DevicePing> foundDevices)
         {
-            PingTaskPoolCreator(128, 256, ref foundDevices);
+            PingTaskPoolCreator(128, ref foundDevices);
             await Task.WhenAll(pingTaskList);
             return true;
         }
 
-        private void PingTaskPoolCreator(int numTasks, int maxSubnet, ref ObservableCollection<DevicePing> foundDevices)
+        private void PingTaskPoolCreator(int numTasks, ref ObservableCollection<DevicePing> foundDevices)
         {
             var it = 1;
 
             while (it < numTasks)
             {
-                pingTaskList.Add(PingIP(maxSubnet / numTasks * (it - 1), maxSubnet / numTasks * it, foundDevices));
+                pingTaskList.Add(PingIP(NetworkSettings.MaxSubnetRange / numTasks * (it - 1), NetworkSettings.MaxSubnetRange / numTasks * it, foundDevices));
                 it++;
             }
         }
@@ -87,7 +87,7 @@ namespace LazyPinger.Core.Services
                 byte[] bufferReply = { 00 };
                 var ipAddressToPing = NetworkSettings.SubnetAddress + i;
 
-                var sendPing = await ping.SendPingAsync(ipAddressToPing, 1, bufferReply);
+                var sendPing = await ping.SendPingAsync(ipAddressToPing, NetworkSettings.PingTimeout, bufferReply);
 
                 if (sendPing.Status != IPStatus.Success)
                     return;

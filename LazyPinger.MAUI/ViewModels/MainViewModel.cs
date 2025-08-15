@@ -26,12 +26,14 @@ namespace LazyPingerMAUI.ViewModels
         [ObservableProperty]
         public UserSelection userSelection = new();
 
-        private INetworkService networkService;
+        public INetworkService NetworkService { get; set; }
+
+        private const int Total_Device_Number = 30000; 
 
         public MainViewModel(INetworkService networkService)
         {
             InitMainVm(networkService);
-            this.networkService = networkService;
+            NetworkService = networkService;
             //this.networkService = networkService;
         }
 
@@ -57,7 +59,7 @@ namespace LazyPingerMAUI.ViewModels
                 Port = "50",
             };
 
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < Total_Device_Number; i++) {
                 DetectedDevices.Add(temp);
                 await Task.Delay(1);
             }
@@ -67,7 +69,7 @@ namespace LazyPingerMAUI.ViewModels
         public void PingAll()
         {
             MainThread.InvokeOnMainThreadAsync(async () => {
-                await networkService.PingAll(ref detectedDevices);
+                await NetworkService.PingAll(ref detectedDevices);
             });
         }
 
@@ -80,10 +82,10 @@ namespace LazyPingerMAUI.ViewModels
             if (res is null)
                 return;
 
-            networkService.NetworkSettings.SubnetAddress = res;
+            NetworkService.NetworkSettings.SubnetAddress = res;
 
             MainThread.InvokeOnMainThreadAsync(async () => {
-                await networkService.PingAll(ref detectedDevices);
+                await NetworkService.PingAll(ref detectedDevices);
             });
         }
 
