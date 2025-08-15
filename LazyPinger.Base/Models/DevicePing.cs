@@ -16,7 +16,7 @@ namespace LazyPinger.Base.Models
         public string IP {  get; set; }
 
         [Required]
-        public int Port { get; set; }
+        public string Port { get; set; }
 
         [Required]
         public string MacAddress { get; set; }
@@ -27,6 +27,7 @@ namespace LazyPinger.Base.Models
         [Required]
         public string Image { get; set; } = "pcb_default.png";
 
+        public string AnswerTime { get; set; } = "0ms";
 
     }
 }
