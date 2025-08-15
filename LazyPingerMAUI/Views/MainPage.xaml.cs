@@ -10,12 +10,12 @@ namespace LazyPingerMAUI.Views
 
         private MainViewModel _mainViewModel { get; set; }
 
-        public MainPage(INetworkService networkService)
+        public MainPage(INetworkService networkService, MainViewModel mainVm)
         {
             InitializeComponent();
 
             _networkService = networkService;
-            _mainViewModel = new MainViewModel(networkService);
+            _mainViewModel = mainVm;
 
             this.BindingContext = _mainViewModel;
 
@@ -46,6 +46,11 @@ namespace LazyPingerMAUI.Views
                     IsSplashVisible = false,
                 };
             });
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
     }
 

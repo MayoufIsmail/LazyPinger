@@ -14,6 +14,5 @@ namespace LazyPinger.Core.Utils
 
         [ObservableProperty]
         public bool isFastPingDisabled = true;
-
     }
 }

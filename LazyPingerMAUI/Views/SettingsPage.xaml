@@ -32,10 +32,11 @@
                                 <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Fast Ping Mode"/>
                                 <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsFastPingDisabled}"/>
                             </HorizontalStackLayout>
-                            <HorizontalStackLayout Margin="0, 20, 0, 5" VerticalOptions="Center" HorizontalOptions="Center">
+                            <HorizontalStackLayout Margin="0, 20, 0, 20" VerticalOptions="Center" HorizontalOptions="Center">
                                 <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Auto Run Mode"/>
                                 <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsAutoRunDisabled}"/>
                             </HorizontalStackLayout>
+                            <Button Text="Apply"></Button>
                         </VerticalStackLayout>
                     </Border>
                 </FlexLayout>

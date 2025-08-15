@@ -9,7 +9,6 @@ namespace LazyPingerMAUI.Views
 
         private MainViewModel _mainViewModel { get; set; }
 
-
         public SettingsPage(INetworkService networkService, MainViewModel mainViewModel)
         {
             InitializeComponent();
@@ -18,7 +17,6 @@ namespace LazyPingerMAUI.Views
             _networkService = networkService;
             _mainViewModel = mainViewModel;
         }
-
     }
 
 }

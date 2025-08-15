@@ -54,7 +54,7 @@ namespace LazyPingerMAUI.ViewModels
                 IP = "192.168.0.1",
                 MacAddress = "FF:FF:FF:FF",
                 Name = "DummyDevice",
-                Port = 50,
+                Port = "50",
             };
 
             for (int i = 0; i < 1000; i++) {

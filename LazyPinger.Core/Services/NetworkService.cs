@@ -100,9 +100,11 @@ namespace LazyPinger.Core.Services
                     ID = foundDevices.Count,
                     Name = "Device" + i,
                     IP = sendPing.Address.ToString(),
-                    Description = "A controller for sensors",
-                    MacAddress = "FF:AA:BB:CC",
-                    Type = "Unknown"
+                    Description = "-",
+                    MacAddress = "XX:XX:XX:XX:XX",
+                    Type = "Unknown",
+                    Port = "-",
+                    AnswerTime = $"{sendPing.RoundtripTime}ms",
                 });
             }
         }
