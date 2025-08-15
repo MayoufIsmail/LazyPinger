@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
              x:Class="LazyPingerMAUI.Views.DeviceView">
-    <VerticalStackLayout Margin="10, 20, 10, 0" Padding="0, 0, 0, 20" >
+    <VerticalStackLayout Margin="10, 20, 10, 0" Padding="0, 0, 0, 15" >
         <Border Stroke="{StaticResource PrimaryDarkSecondAlternative}">
 
             <Grid RowDefinitions="Auto,Auto,Auto" 
@@ -11,22 +11,27 @@
                   Background="{StaticResource PrimaryGradient}">
                 
                 <Border Grid.Row="0" 
+                        x:DataType="models:DevicePing"
                         Stroke="{StaticResource PrimaryDarkAlternative}">
-                    
-                    <!-- <Image Source="{Binding IconImageSource}"/> -->
-                 </Border>
+
+                    <Image WidthRequest="125"
+                           HeightRequest="125" 
+                           Source="{Binding Image}"/>
+                </Border>
+                
                 <StackLayout VerticalOptions="Center" 
                              HorizontalOptions="Center" 
                              Grid.Row="1" 
-                             Padding="0, 0, 0, 50"
-                             Margin="5, 0, 0, 30"
+                             Padding="0, 0, 0, 15"
+                             Margin="5, 0, 0, 15"
                              x:DataType="models:DevicePing">
-                    <Label Text="{Binding Name, StringFormat=Name: {0}, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding IP, StringFormat=IP: {0}, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding Type, StringFormat=Type {0}, FallbackValue='Type Name'}"/>
-                    <Label Text="{Binding Description,StringFormat=Description: {0}, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding MacAddress, StringFormat=MAC: {0}, FallbackValue ='Device Name'}"/>
-                    <Label Text="{Binding Port, FallbackValue='Device Name'}"/>
+            
+                    <Label Style="{StaticResource SubHeadlineAlternative}"  Text="{Binding Name, StringFormat=Name: {0}, FallbackValue='Device Name'}"/>
+                    <Label  Style="{StaticResource SubHeadlineAlternative}" Text="{Binding IP, StringFormat=IP: {0}, FallbackValue='Device Name'}" Margin="0, 0, 0, 20"/>
+                    <Label Style="{StaticResource Defaultline}" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Type, StringFormat=Type {0}, FallbackValue='Type Name'}"/>
+                    <Label Style="{StaticResource Defaultline}" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Description,StringFormat=Description: {0}, FallbackValue='Device Name'}"/>
+                    <Label Style="{StaticResource Defaultline}" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding MacAddress, StringFormat=MAC: {0}, FallbackValue ='Device Name'}"/>
+                    <Label Style="{StaticResource Defaultline}" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Port, FallbackValue='Device Name'}"/>
                 </StackLayout>
             </Grid>
         </Border>

@@ -22,7 +22,11 @@ namespace LazyPinger.Base.Models
         public string MacAddress { get; set; }
 
         [Required]
-        public string Type { get; set; }
+        public string Type { get; set; } = "Unknown";
+
+        [Required]
+        public string Image { get; set; } = "pcb_default.png";
+
 
     }
 }

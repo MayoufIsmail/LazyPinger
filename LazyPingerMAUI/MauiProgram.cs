@@ -27,6 +27,7 @@ namespace LazyPingerMAUI
                     fonts.AddFont("NotoSans-Italic.ttf", "NotoSansItalic");
                     fonts.AddFont("NotoSans-Bolditalic.ttf", "NotoSansBoldItalic");
                     fonts.AddFont("NotoSans_Condensed-Black.ttf", "NotoSansCondensedBlack");
+                    fonts.AddFont("NotoSans_Condensed-Bold.ttf", "NotoSansCondensedBold");
                     fonts.AddFont("NotoSans_Condensed-BoldItalic.ttf", "NotoSansCondensedBoldItalic");
                     fonts.AddFont("NotoSans_Condensed-BlackItalic.ttf", "NotoSansCondensedBlackItalic");
                 });
