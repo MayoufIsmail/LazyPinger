@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Color x:Key="Primary">#ffd60a</Color>
+    <Color x:Key="Primary">#ff9e7900</Color>
     <Color x:Key="PrimaryDark">#ffc300</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
     <Color x:Key="Secondary">#003566</Color>
