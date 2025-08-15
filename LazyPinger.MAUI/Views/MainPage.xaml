@@ -78,15 +78,18 @@
 
                 <!-- DEVICES -->
 
-                <CollectionView Grid.Row="3" 
-                                ItemsSource="{Binding DetectedDevices}" 
-                                ItemsLayout="VerticalGrid, 3">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:DevicePing">
-                            <views:DeviceView DevicePing="{Binding}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <ScrollView Grid.Row="3">
+                    <FlexLayout BindableLayout.ItemsSource="{Binding DetectedDevices}"
+                                Wrap="Wrap"
+                                JustifyContent="Center"
+                                AlignItems="Center">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:DevicePing">
+                                <views:DeviceView DevicePing="{Binding}" WidthRequest="250" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </ScrollView>
             </Grid>
         </ScrollView>
 

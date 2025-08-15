@@ -41,7 +41,7 @@ namespace LazyPingerMAUI.ViewModels
                  await networkService.InitNetworkSettings();
                  var addresses = networkService.NetworkSettings.HostAddresses.Where(o => o.AddressFamily == AddressFamily.InterNetwork).Select(o => o.ToString());
                  DetectedNetworkInterfaces = new ObservableCollection<string>(addresses);
-                 //await InitDummyDevices();
+                 await InitDummyDevices();
             });
         }
 
@@ -59,7 +59,7 @@ namespace LazyPingerMAUI.ViewModels
 
             for (int i = 0; i < 1000; i++) {
                 DetectedDevices.Add(temp);
-                await Task.Delay(100);
+                await Task.Delay(1);
             }
         }
 

@@ -21,7 +21,13 @@
                     FontSize="24"/>
         </Grid>
     </Shell.TitleView>
-    
+
+    <Shell.ToolbarItems>
+        <ToolbarItem Text="☰"  
+                     Clicked="OnHamburgerClicked">
+        </ToolbarItem>
+    </Shell.ToolbarItems>
+
     <FlyoutItem Title="Home"
                     Icon="lazy_pinger_logo.png"
                     x:Name="MainTab">
