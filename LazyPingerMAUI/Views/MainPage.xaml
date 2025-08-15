@@ -8,23 +8,22 @@
              x:Class="LazyPingerMAUI.Views.MainPage"
              x:DataType="vm:MainViewModel">
 
-    <Grid>
+    <Grid RowDefinitions="150, *">
+
+        <VerticalStackLayout Grid.Row="0" 
+                         VerticalOptions="Fill"
+                         HorizontalOptions="Fill"
+                         Background="{StaticResource Tertiary}">
+            <Label Style="{StaticResource Headline}" 
+               TextColor="{StaticResource Primary}"
+               Text="{x:Static strings:AppResources.LazySlogan}">
+            </Label>
+        </VerticalStackLayout>
         
         <!-- MAIN -->
 
-        <ScrollView>
+        <ScrollView Grid.Row="1" Margin="0, 50, 0, 0">
             <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="*">
-
-                <VerticalStackLayout Grid.Row="0" 
-                             IsVisible="{Binding AnimationHandler.IsTopLogoVisible}"
-                             HorizontalOptions="Fill"
-                             Padding="20"
-                             Background="{StaticResource Tertiary}">
-                    <Label Style="{StaticResource Headline}" 
-                           TextColor="{StaticResource Primary}"
-                           Text="{x:Static strings:AppResources.LazySlogan}">
-                    </Label>
-                </VerticalStackLayout>
 
                 <FlexLayout Grid.Row="{Binding AnimationHandler.DevicesRow}"
                             Grid.RowSpan="{Binding AnimationHandler.DevicesRowSpan}"
@@ -46,7 +45,7 @@
                     <Grid FlexLayout.Grow="1" RowDefinitions="Auto, Auto" FlexLayout.AlignSelf="Stretch">
                         <Label Grid.Row="0"  Text="Select your range" Margin="5, 0, 0, 20"/>
 
-                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*,*" Grid.Row="1"> 
+                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*,*" Grid.Row="1">
                             <Entry Keyboard="Numeric" Grid.Column="0"
                             Placeholder="Min Range - 0" />
 
@@ -69,7 +68,7 @@
                 </FlexLayout>
 
                 <!-- DEVICES -->
-                
+
                 <CollectionView Grid.Row="3" 
                                 ItemsSource="{Binding DetectedDevices}" 
                                 ItemsLayout="VerticalGrid, 3">
@@ -82,12 +81,13 @@
             </Grid>
         </ScrollView>
 
-        
         <!-- SPLASH -->
         
         <Grid IsVisible="{Binding AnimationHandler.IsGreyVisible}" 
               Background="{StaticResource Gray900}"
               Opacity="0.9"
+              Grid.Row="0"
+              Grid.RowSpan="2"
               BackgroundColor="{StaticResource Gray900}">
 
             <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center"> 
@@ -99,7 +99,9 @@
         </Grid>
 
         <Grid IsVisible="{Binding AnimationHandler.IsSplashVisible}"
-                             BackgroundColor="{StaticResource Gray950}">
+              Grid.Row="0"
+              Grid.RowSpan="2"
+              BackgroundColor="{StaticResource Gray950}">
 
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Label VerticalOptions="Center" 
@@ -117,5 +119,4 @@
         
     </Grid>
     
-
 </ContentPage>

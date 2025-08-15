@@ -5,14 +5,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:LazyPingerMAUI.Views"
     Shell.FlyoutBehavior="Flyout"
-    Shell.NavBarIsVisible="False" 
+    Shell.NavBarIsVisible="False"
     Title="LazyPingerMAUI">
 
     <!--<ShellContent
         ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />-->
 
-        <FlyoutItem Title="Home"
+    <Shell.TitleView>
+        <Grid>
+            <Button Text="☰" 
+                    Clicked="OnHamburgerClicked" 
+                    HorizontalOptions="Start" 
+                    BackgroundColor="Transparent" 
+                    FontSize="24"/>
+        </Grid>
+    </Shell.TitleView>
+    
+    <FlyoutItem Title="Home"
                     Icon="lazy_pinger_logo.png"
                     x:Name="MainTab">
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main"/>

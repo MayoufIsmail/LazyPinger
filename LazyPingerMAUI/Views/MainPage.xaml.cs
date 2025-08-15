@@ -39,8 +39,8 @@ namespace LazyPingerMAUI.Views
 
                 _mainViewModel.AnimationHandler = new AnimationHandler()
                 {
-                    DevicesRowSpan = 2,
-                    DevicesRow = 0,
+                    //DevicesRowSpan = 2,
+                    //DevicesRow = 0,
                     IsTopLogoVisible = false,
                     IsGreyVisible = false,
                     IsSplashVisible = false,

@@ -75,13 +75,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Update="Resources\Images\appicon.SVG">
-	    <ForegroundFile>Resources\AppIcon\appiconfg.svg</ForegroundFile>
-	    <TintColor>#212121</TintColor>
-	  </MauiImage>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="Views\DeviceView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
