@@ -1,36 +1,50 @@
-name: .NET CI
+name: .NET MAUI CI
 
 on:
-    push:
-      branches: [ "main" ]
-    pull_request:
-      branches: [ "main" ]
+  
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  
   build:
-      runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        
+        include:
+          - os: ubuntu-latest
+            target_framework: net8.0-android
+          - os: macos-latest
+            target_framework: net8.0-ios
 
     
-      steps:
+    runs-on: ${{ matrix.os }}
+
+    steps:
       
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
+      
       - name: Install .NET MAUI Workloads
         run: dotnet workload restore
 
+      
       - name: Restore dependencies
         run: dotnet restore LazyPinger.sln
 
       
       - name: Build
-        run: dotnet build LazyPinger.sln --no-restore
+        run: dotnet build LazyPinger.sln -f ${{ matrix.target_framework }} --no-restore
 
+      
       - name: Test
         run: dotnet test LazyPinger.sln --no-build --verbosity normal
