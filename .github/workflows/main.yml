@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-        run: dotnet restore /workspaces/LazyPinger/LazyPinger.Tests/LazyPinger.Tests.csproj
+      run: dotnet restore /workspaces/LazyPinger/LazyPinger.Tests/LazyPinger.Tests.csproj
     - name: Build
-      run: dotnet /workspaces/LazyPinger/LazyPinger.Tests --no-restore
+      run: dotnet build /workspaces/LazyPinger/LazyPinger.Tests/LazyPinger.Tests.csproj --no-restore
     - name: Test
-      run: dotnet test /workspaces/LazyPinger/LazyPinger.Tests --no-build --verbosity normal
+      run: dotnet test /workspaces/LazyPinger/LazyPinger.Tests/LazyPinger.Tests.csproj --no-build --verbosity normal
