@@ -64,6 +64,11 @@
                             FlexLayout.Grow="1"/>
 
                     <Button Margin="5"
+                            Command="{Binding PingAllCommand}"
+                            Text="Restart"
+                            FlexLayout.Grow="1"/>
+                    
+                    <Button Margin="5"
                             IsEnabled="{Binding UserSelection.IsAutoRunDisabled}"
                             Command="{Binding PingAllCommand}"
                             Text="Stop"

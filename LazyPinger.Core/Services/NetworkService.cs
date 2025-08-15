@@ -93,13 +93,18 @@ namespace LazyPinger.Core.Services
                 if (sendPing.Status != IPStatus.Success)
                     return;
 
+                var foundIP = sendPing.Address.ToString();
                 //var arpDetector = new(ipAddressToPing)
                 //await ArpDetectorService.ArpInit();
+
+                if (foundDevices.ToList().Exists(o => o.IP == foundIP))
+                    continue;
+
                 foundDevices.Add(new DevicePing()
                 {
                     ID = foundDevices.Count,
                     Name = "Device" + i,
-                    IP = sendPing.Address.ToString(),
+                    IP = foundIP,
                     Description = "-",
                     MacAddress = "XX:XX:XX:XX:XX",
                     Type = "Unknown",

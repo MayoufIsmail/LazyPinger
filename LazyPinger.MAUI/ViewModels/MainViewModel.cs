@@ -64,9 +64,11 @@ namespace LazyPingerMAUI.ViewModels
         }
 
         [RelayCommand]
-        public Task PingAll()
+        public void PingAll()
         {
-            return Task.CompletedTask;
+            MainThread.InvokeOnMainThreadAsync(async () => {
+                await networkService.PingAll(ref detectedDevices);
+            });
         }
 
         partial void OnSelectedNetworkInterfaceChanged(string newValue)
