@@ -1,25 +1,38 @@
-name: .NET
+name: .NET CI
 
 on:
+  
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
+  
   build:
-
+    
     runs-on: ubuntu-latest
 
+    
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore /workspaces/LazyPinger/LazyPinger.Tests/LazyPinger.Tests.csproj
-    - name: Build
-      run: dotnet build /workspaces/LazyPinger/LazyPinger.Tests/LazyPinger.Tests.csproj --no-restore
-    - name: Test
-      run: dotnet test /workspaces/LazyPinger/LazyPinger.Tests/LazyPinger.Tests.csproj --no-build --verbosity normal
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      
+      - name: Restore dependencies
+        run: dotnet restore LazyPinger.sln
+
+      
+      - name: Build
+        run: dotnet build LazyPinger.sln --no-restore
+
+      
+      - name: Test
+        run: dotnet test LazyPinger.sln --no-build --verbosity normal
