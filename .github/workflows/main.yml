@@ -1,50 +1,64 @@
 name: .NET MAUI CI
-
 on:
-  
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
-  build:
-    
-    strategy:
-      matrix:
-        
-        include:
-          - os: ubuntu-latest
-            target_framework: net8.0-android
-          - os: macos-latest
-            target_framework: net8.0-ios
-
-    
-    runs-on: ${{ matrix.os }}
-
+#Androd
+  build-android:
+    runs-on: ubuntu-latest
     steps:
-      
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-
-      
       - name: Install .NET MAUI Workloads
         run: dotnet workload restore
-
-      
       - name: Restore dependencies
         run: dotnet restore LazyPinger.sln
+      - name: Build for Android
+        run: dotnet build LazyPinger.sln -f net8.0-android --no-restore
+      - name: Run Tests
+        run: dotnet test LazyPinger.sln --no-build --verbosity normal
+#IOS
+  build-ios:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Install .NET MAUI Workloads
+        run: dotnet workload restore
+      - name: Restore dependencies
+        run: dotnet restore LazyPinger.sln
+      - name: Build for iOS
+        run: dotnet build LazyPinger.sln -f net8.0-ios --no-restore
+      - name: Run Tests
+        run: dotnet test LazyPinger.sln --no-build --verbosity normal
 
-      
-      - name: Build
-        run: dotnet build LazyPinger.sln -f ${{ matrix.target_framework }} --no-restore
-
-      
-      - name: Test
+  #Build for Windosw 
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Install .NET MAUI Workloads
+        run: dotnet workload restore
+      - name: Restore dependencies
+        run: dotnet restore LazyPinger.sln
+      - name: Build for Windows
+        # The full target framework moniker is needed for Windows
+        run: dotnet build LazyPinger.sln -f net8.0-windows10.0.19041.0 --no-restore
+      - name: Run Tests
         run: dotnet test LazyPinger.sln --no-build --verbosity normal
