@@ -25,7 +25,7 @@ namespace LazyPinger.Base.Models
 
         public int MaxSubnetRange { get; set; } = 255;
 
-        public int PingTimeout { get; set; } = 2;
+        public int PingTimeout { get; set; } = 1000;
 
     }
 }

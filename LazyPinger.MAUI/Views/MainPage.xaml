@@ -34,7 +34,7 @@
                             VerticalOptions="End">
 
                     <VerticalStackLayout FlexLayout.Grow="1">
-                        <Label Text="Select your network interface" Margin="5, 0, 0, 20"/>
+                        <Label Text="Network interface" Margin="5, 0, 0, 20"/>
 
                         <Picker FlexLayout.Grow="1"
                                 FlexLayout.Shrink="1"
@@ -45,20 +45,22 @@
                     </VerticalStackLayout>
 
                     <Grid FlexLayout.Grow="1" RowDefinitions="Auto, *" ColumnDefinitions="Auto, *" FlexLayout.AlignSelf="Stretch">
-                        <Label Grid.Row="0" Grid.Column="0" Text="Select your range" Margin="5, 0, 20, 20"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Range" Margin="10, 0, 20, 20"/>
 
-                        <Label Grid.Row="0" Grid.Column="1"  Text="Timeout in ms" Margin="20, 0, 0, 20"/>
+                        <Label Grid.Row="0" Grid.Column="1"  Text="Timeout (ms)" Margin="20, 0, 0, 20"/>
 
-                        <Grid RowDefinitions="Auto, Auto" Margin="0, 0, 20, 0" ColumnDefinitions="*,*" Grid.Column="0" Grid.Row="1">
+                        <Grid RowDefinitions="Auto, Auto" Margin="10, 0, 20, 0" ColumnDefinitions="*,*" Grid.Column="0" Grid.Row="1">
                             <Entry Grid.Column="0"
                                    Keyboard="Numeric" 
                                    IsEnabled="False"
+                                   MaxLength="3"
                                    Text="{Binding NetworkService.NetworkSettings.MinSubnetRange}"
                                    Placeholder="Min Range - 0" />
 
                             <Entry Grid.Column="1"
                                    Keyboard="Numeric" 
-                                    Text="{Binding NetworkService.NetworkSettings.MinSubnetRange}"
+                                   MaxLength="3"
+                                   Text="{Binding NetworkService.NetworkSettings.MaxSubnetRange}"
                                    Placeholder="Max Range - 255" />
                         </Grid>
 
@@ -93,9 +95,13 @@
 
                 </FlexLayout>
 
-                <FlexLayout Margin="10" Grid.Row="3" AlignContent="Center" JustifyContent="Center" AlignItems="Center"> 
-                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding DetectedDevices.Count, StringFormat='Total Devices {0}'}"/>
-                </FlexLayout>
+                <Border Margin="10" Stroke="{StaticResource Primary}" Grid.Row="3">
+                    <FlexLayout Margin="10" AlignContent="Center" JustifyContent="Center" AlignItems="Center">
+                        <Grid>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding DetectedDevices.Count, StringFormat='Total Devices {0}'}"/>
+                        </Grid>
+                     </FlexLayout>
+                </Border>
 
                 <!-- DEVICES -->
 
