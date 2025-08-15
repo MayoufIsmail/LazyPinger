@@ -3,29 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
              x:Class="LazyPingerMAUI.Views.DeviceView">
-    <VerticalStackLayout>
-        <Border 
-            BackgroundColor="{Binding DeviceColor}"
-            Stroke="{Binding DeviceBorderColor}">
-            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*">
+    <VerticalStackLayout Margin="10, 20, 10, 0" Padding="0, 0, 0, 20" >
+        <Border Stroke="{StaticResource PrimaryDarkSecondAlternative}">
+
+            <Grid RowDefinitions="Auto,Auto,Auto" 
+                  ColumnDefinitions="*"  
+                  Background="{StaticResource PrimaryGradient}">
                 
-                <Border Grid.Row="0" Stroke="{Binding BorderColor, FallbackValue='Black'}"
-                    BackgroundColor="{Binding IconBackgroundColor, FallbackValue='Grey'}">
+                <Border Grid.Row="0" 
+                        Stroke="{StaticResource PrimaryDarkAlternative}">
+                    
                     <!-- <Image Source="{Binding IconImageSource}"/> -->
                  </Border>
                 <StackLayout VerticalOptions="Center" 
                              HorizontalOptions="Center" 
                              Grid.Row="1" 
-                             Margin="20"
+                             Padding="0, 0, 0, 50"
+                             Margin="5, 0, 0, 30"
                              x:DataType="models:DevicePing">
                     <Label Text="{Binding Name, StringFormat=Name: {0}, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding IP, StringFormat=IP: {0}FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding Description, FallbackValue='Device Name'}"/>
-                    <Label Text="{Binding MacAddress,StringFormat=MAC: {0} FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding IP, StringFormat=IP: {0}, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding Type, StringFormat=Type {0}, FallbackValue='Type Name'}"/>
+                    <Label Text="{Binding Description,StringFormat=Description: {0}, FallbackValue='Device Name'}"/>
+                    <Label Text="{Binding MacAddress, StringFormat=MAC: {0}, FallbackValue ='Device Name'}"/>
                     <Label Text="{Binding Port, FallbackValue='Device Name'}"/>
                 </StackLayout>
-
-                <BoxView Grid.Row="2" BackgroundColor="{Binding BorderColor, FallbackValue='Black'}" />
             </Grid>
         </Border>
     </VerticalStackLayout>
