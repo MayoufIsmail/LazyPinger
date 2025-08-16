@@ -94,16 +94,26 @@
 
                             <Label Margin="5" Style="{StaticResource SubHeadlineAlternative}">New Device Group</Label>
 
-                            <StackLayout FlexLayout.Grow="1" VerticalOptions="Center" HorizontalOptions="Fill">
-                                <Label Margin="20, 0, 0, 5" Text="Type"/>
-                                <Entry Margin="20"/>
+                            <StackLayout FlexLayout.Grow="1" 
+                                         VerticalOptions="Center" 
+                                         HorizontalOptions="Fill">
+                                <Label Margin="20, 0, 0, 5" 
+                                       Text="Type"/>
+
+                                <Entry Margin="20" Text="{Binding DeviceGroupTemp.Type}"/>
                             </StackLayout>
-                            <StackLayout  FlexLayout.Grow="1" VerticalOptions="Center" HorizontalOptions="Fill">
+                            <StackLayout  FlexLayout.Grow="1" 
+                                          VerticalOptions="Center" 
+                                          HorizontalOptions="Fill">
                                 <Label  Margin="20, 0, 0, 5" Text="Color"/>
-                                <Picker Margin="20"/>
+                                <Picker ItemsSource="{Binding MainVm.ExistingColors}" 
+                                        SelectedItem="{Binding DeviceGroupTemp.Color}" 
+                                        Margin="20"/>
                             </StackLayout>
 
-                            <Button Margin="20" Text="Create"></Button>
+                            <Button Margin="20"
+                                    Command="{Binding CreateNewDeviceGroupCommand}"
+                                    Text="Create"></Button>
                         </FlexLayout>
                     </Border>
                 </Grid>

@@ -12,6 +12,8 @@ namespace LazyPingerMAUI.ViewModels
 
         public DevicePing DevicePingTemp { get; set; } = new();
 
+        public DevicesGroup DeviceGroupTemp { get; set; } = new();
+
         public SettingsViewModel(INetworkService networkService, MainViewModel mainViewModel)
         {
             MainVm = mainViewModel;
@@ -33,22 +35,31 @@ namespace LazyPingerMAUI.ViewModels
             }
         }
 
+        [RelayCommand]
+        public async Task CreateNewDeviceGroup()
+        {
+            var db = ListenVm.Instance.dbContext;
+            db.DevicesGroups.Add(DeviceGroupTemp);
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+        }
+
 
         [RelayCommand]
         public async Task ApplyUserSelection()
         {
-            //ListenVm.Instance.UserSelections = new()
-            //{
-            //    IsFastPingDisabled = MainVm.UserSelection.IsFastPingDisabled,
-            //    IsAutoRunDisabled = MainVm.UserSelection.IsAutoRunDisabled,
-            //};
-
             var res = ListenVm.Instance.UserSelections.Entity;
 
             try
             {
-                //ListenVm.Instance.dbContext.Update(res);
-
                 await ListenVm.Instance.dbContext.SaveChangesAsync();
             }
             catch
