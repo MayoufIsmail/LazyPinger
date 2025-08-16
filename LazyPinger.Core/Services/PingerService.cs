@@ -1,11 +1,11 @@
-﻿using LazyPinger.Base.Models;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using LazyPinger.Base.Services;
 using LazyPinger.Base.IServices;
+using LazyPinger.Base.Models.Devices;
 
 namespace LazyPinger.Core.Services
 {

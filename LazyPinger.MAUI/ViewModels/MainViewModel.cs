@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
+using LazyPinger.Base.Models.Devices;
 using LazyPinger.Core.Services;
 using LazyPinger.Core.Utils;
 using System.Collections.ObjectModel;

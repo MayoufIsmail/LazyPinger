@@ -1,5 +1,5 @@
 ﻿using LazyPinger.Base.IServices;
-using LazyPinger.Base.Models;
+using LazyPinger.Base.Models.Network;
 using LazyPinger.Base.Services;
 using LazyPinger.Core.IPHlp;
 using LazyPinger.Core.Services;

@@ -1,5 +1,6 @@
 ﻿using LazyPinger.Base.IServices;
-using LazyPinger.Base.Models;
+using LazyPinger.Base.Models.Devices;
+using LazyPinger.Base.Models.Network;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.NetworkInformation;
