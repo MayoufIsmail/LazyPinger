@@ -1,4 +1,4 @@
-﻿namespace LazyPinger.Base.Models;
+﻿namespace LazyPinger.Base.Models.Network;
 
 public class ArpType
 {

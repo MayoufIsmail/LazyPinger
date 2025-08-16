@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Net.Sockets;
 using System.Net;
-using LazyPinger.Base.Models;
+using LazyPinger.Base.Models.Devices;
 
 namespace LazyPinger.Base.Services
 {

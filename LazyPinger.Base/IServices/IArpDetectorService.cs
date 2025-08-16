@@ -1,4 +1,4 @@
-﻿using LazyPinger.Base.Models;
+﻿using LazyPinger.Base.Models.Network;
 
 namespace LazyPinger.Base.Services
 {

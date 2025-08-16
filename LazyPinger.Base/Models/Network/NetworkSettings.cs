@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Net;
 
-namespace LazyPinger.Base.Models
+namespace LazyPinger.Base.Models.Network
 {
     public class NetworkSettings
     {

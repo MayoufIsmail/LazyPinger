@@ -1,10 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LazyPinger.Base.Models
+namespace LazyPinger.Base.Models.Devices
 {
     public class DevicePing
     {
+        [Key]
         public int ID { get; set; }
+
+        public int DevicesGroupID { get; set; }
+
+        [ForeignKey(nameof(DevicesGroupID))]
+        public DevicesGroup DevicesGroup { get; set; }
 
         [Required]
         public string Name { get; set; }
