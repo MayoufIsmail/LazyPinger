@@ -20,10 +20,10 @@
             </VerticalStackLayout>
 
             <ScrollView Grid.Row="1">
-                <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, Auto">
+                <Grid RowDefinitions="Auto, *" ColumnDefinitions="*, *" HorizontalOptions="Center">
 
                     <FlexLayout   Direction="Column"
-                                  JustifyContent="Start"
+                                  JustifyContent="Center"
                                   Grid.Row="0"
                                   Grid.Column="0"
                                   Grid.ColumnSpan="2"
@@ -46,53 +46,58 @@
                         </Border>
                     </FlexLayout>
 
-                    <FlexLayout Direction="Column"
-                                JustifyContent="Start"
-                                AlignItems="Stretch"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Margin="20">
+                    <Border    Grid.Row="1"
+                               Grid.Column="0" 
+                               Margin="20"
+                               Stroke="{StaticResource Primary}">
 
-                        <Border Stroke="{StaticResource Primary}">
-                            <VerticalStackLayout Margin="20">
-                                <Label Style="{StaticResource SubHeadlineAlternative}">Set your settings</Label>
-                                <HorizontalStackLayout Margin="0, 20, 0, 5" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Fast Ping Mode"/>
-                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsFastPingDisabled}"/>
-                                </HorizontalStackLayout>
-                                <HorizontalStackLayout Margin="0, 20, 0, 20" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Auto Run Mode"/>
-                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsAutoRunDisabled}"/>
-                                </HorizontalStackLayout>
-                                <Button Text="Create a device"></Button>
-                            </VerticalStackLayout>
-                        </Border>
-                    </FlexLayout>
+                        <FlexLayout Direction="Column"
+                                JustifyContent="Center"
+                                AlignItems="Stretch">
 
-                    <FlexLayout Direction="Column"
-                                JustifyContent="Start"
-                                AlignItems="Stretch"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Margin="20">
+                            <Label Margin="5" Style="{StaticResource SubHeadlineAlternative}">New Device</Label>
 
-                        <Border Stroke="{StaticResource Primary}">
-                            <VerticalStackLayout Margin="20">
-                                <Label Style="{StaticResource SubHeadlineAlternative}">Set your settings</Label>
-                                <HorizontalStackLayout Margin="0, 20, 0, 5" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Fast Ping Mode"/>
-                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsFastPingDisabled}"/>
-                                </HorizontalStackLayout>
-                                <HorizontalStackLayout Margin="0, 20, 0, 20" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Auto Run Mode"/>
-                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsAutoRunDisabled}"/>
-                                </HorizontalStackLayout>
-                                <Button Text="Create a device group"></Button>
-                            </VerticalStackLayout>
-                        </Border>
-                    </FlexLayout>
+                            <StackLayout FlexLayout.Grow="1" VerticalOptions="Center" HorizontalOptions="Fill">
+                                <Label Margin="20, 0, 0, 10" Text="Name"/>
+                                <Entry Margin="20"/>
+                            </StackLayout>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+                                <Label Margin="20, 0, 0, 10" Text="Image"/>
+                                <Picker Margin="20"/>
+                            </StackLayout>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+                                <Label Margin="20, 0, 0, 10" Text="Device Group"/>
+                                <Picker Margin="20"/>
+                            </StackLayout>
+
+                            <Button Margin="20" Text="Create"></Button>
+                        </FlexLayout>
+                    </Border>
+
+                    <Border Stroke="{StaticResource Primary}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="20">
+
+                        <FlexLayout Direction="Column"
+                                JustifyContent="Center"
+                                AlignItems="Stretch">
+
+                            <Label Margin="5" Style="{StaticResource SubHeadlineAlternative}">New Device Group</Label>
+
+                            <StackLayout FlexLayout.Grow="1" VerticalOptions="Center" HorizontalOptions="Fill">
+                                <Label Margin="20, 0, 0, 5" Text="Type"/>
+                                <Entry Margin="20"/>
+                            </StackLayout>
+                            <StackLayout  FlexLayout.Grow="1" VerticalOptions="Center" HorizontalOptions="Fill">
+                                <Label  Margin="20, 0, 0, 5" Text="Color"/>
+                                <Picker Margin="20"/>
+                            </StackLayout>
+
+                            <Button Margin="20" Text="Create"></Button>
+                        </FlexLayout>
+                    </Border>
                 </Grid>
-              
             </ScrollView>
         </Grid>
     </ScrollView>
