@@ -1,9 +1,9 @@
 name: .NET MAUI CI
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "feat/dummy" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "feat/dummy" ]
 
 jobs:
 #Androd
