@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LazyPinger.Base.Models.Devices;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LazyPinger.Base.Models;
 
 public partial class LazyPingerDbContext : DbContext
 {
+    private const string DbFilePath = "Data Source = C:\\Users\\Admin\\Documents\\Github\\LazyPinger\\LazyPinger.Base\\lazypinger_database.db";
+
     public LazyPingerDbContext()
     {
     }
@@ -16,7 +20,7 @@ public partial class LazyPingerDbContext : DbContext
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=./lazypinger_database.db");
+        => optionsBuilder.UseSqlite(DbFilePath);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -24,4 +28,9 @@ public partial class LazyPingerDbContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public DbSet<UserSelection> UserSelections { get; set; }
+    public DbSet<DevicePing> DevicePings { get; set; }
+    public DbSet<DevicesGroup> DevicesGroups { get; set; }
+
 }
