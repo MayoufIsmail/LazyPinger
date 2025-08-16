@@ -35,6 +35,8 @@ namespace LazyPingerMAUI.ViewModels
 
         public IEnumerable<string> ExistingColors { get; set; } = ["Red", "Green", "Blue"];
 
+        public IEnumerable<string> ExistingImages { get; set; } = ["Pcb", "PC", "Phone"];
+
         public IEnumerable<string> ExistingGroups { get; set; } = ["Unknown", "Test1", "Test2"];
 
         public INetworkService NetworkService { get; set; }

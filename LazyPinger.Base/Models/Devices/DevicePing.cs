@@ -16,17 +16,13 @@ namespace LazyPinger.Base.Models.Devices
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        [Required]
-        public string IP {  get; set; }
+        public string? IP {  get; set; }
 
-        [Required]
-        public string Port { get; set; }
+        public string? Port { get; set; }
 
-        [Required]
-        public string MacAddress { get; set; }
+        public string? MacAddress { get; set; }
 
         [Required]
         public string Type { get; set; } = "Unknown";
@@ -34,7 +30,7 @@ namespace LazyPinger.Base.Models.Devices
         [Required]
         public string Image { get; set; } = "pcb_default.png";
 
-        public string AnswerTime { get; set; } = "0ms";
+        public string? AnswerTime { get; set; } = "0ms";
 
     }
 }
