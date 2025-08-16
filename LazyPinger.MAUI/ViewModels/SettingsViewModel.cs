@@ -1,5 +1,7 @@
-﻿using LazyPinger.Base.Entities;
+﻿using CommunityToolkit.Mvvm.Input;
+using LazyPinger.Base.Entities;
 using LazyPinger.Base.IServices;
+using LazyPinger.Core.ViewModels;
 
 namespace LazyPingerMAUI.ViewModels
 {
@@ -12,9 +14,27 @@ namespace LazyPingerMAUI.ViewModels
             MainVm = mainViewModel;
         }
 
-        //partial void OnUserSelectionChanged(UserSelection newValue)
-        //{
-            
-        //}
+        [RelayCommand]
+        public async Task ApplyUserSelection()
+        {
+            //ListenVm.Instance.UserSelections = new()
+            //{
+            //    IsFastPingDisabled = MainVm.UserSelection.IsFastPingDisabled,
+            //    IsAutoRunDisabled = MainVm.UserSelection.IsAutoRunDisabled,
+            //};
+
+            var res = ListenVm.Instance.UserSelections.Entity;
+
+            try
+            {
+                //ListenVm.Instance.dbContext.Update(res);
+
+                await ListenVm.Instance.dbContext.SaveChangesAsync();
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

@@ -41,7 +41,7 @@
                                     <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Auto Run Mode"/>
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsAutoRunDisabled}"/>
                                 </HorizontalStackLayout>
-                                <Button Text="Apply"></Button>
+                                <Button Command="{Binding ApplyUserSelectionCommand}" Text="Apply"></Button>
                             </VerticalStackLayout>
                         </Border>
                     </FlexLayout>

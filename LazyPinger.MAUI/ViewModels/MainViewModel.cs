@@ -5,8 +5,10 @@ using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models;
 using LazyPinger.Base.Models.Devices;
 using LazyPinger.Core.Utils;
+using LazyPinger.Core.ViewModels;
 using System.Collections.ObjectModel;
 using System.Net.Sockets;
+using System.Reflection.Metadata;
 
 namespace LazyPingerMAUI.ViewModels
 {
@@ -34,8 +36,26 @@ namespace LazyPingerMAUI.ViewModels
         public MainViewModel(INetworkService networkService)
         {
             InitMainVm(networkService);
+            _ = InitDatabaseData();
             NetworkService = networkService;
             //this.networkService = networkService;
+        }
+
+        private async Task InitDatabaseData()
+        {
+            var db = ListenVm.Instance.dbContext;
+
+            var userSelection = db.UserSelections.FirstOrDefault();
+
+            if (userSelection is null)
+            {
+                db.Add(new UserSelection { AutoRun = true, FastPing = true});
+                await db.SaveChangesAsync();
+            }
+
+            userSelection = db.UserSelections.FirstOrDefault();
+
+            UserSelection = new VmUserSelection(userSelection);
         }
 
         private void InitMainVm(INetworkService networkService)
