@@ -62,15 +62,19 @@
 
                             <StackLayout FlexLayout.Grow="1" VerticalOptions="Center" HorizontalOptions="Fill">
                                 <Label Margin="20, 0, 0, 10" Text="Name"/>
-                                <Entry Margin="20" Text="{Binding MainVm.DevicesPing.}"/>
+                                <Entry Margin="20" Text="{Binding VmDevicePingTemp.Name}"/>
                             </StackLayout>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
                                 <Label Margin="20, 0, 0, 10" Text="Image"/>
-                                <Picker Margin="20"/>
+                                <Picker Margin="20" 
+                                        ItemsSource="{Binding MainVm.ExistingColors}" 
+                                        SelectedItem="{Binding VmDevicePingTemp.Image}"/>
                             </StackLayout>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
                                 <Label Margin="20, 0, 0, 10" Text="Device Group"/>
-                                <Picker Margin="20"/>
+                                <Picker Margin="20" 
+                                        ItemsSource="{Binding MainVm.ExistingGroups}"
+                                        SelectedItem="{Binding VmDevicePingTemp.Group}"/>
                             </StackLayout>
 
                             <Button Margin="20" Text="Create"></Button>

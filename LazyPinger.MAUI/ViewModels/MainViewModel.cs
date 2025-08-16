@@ -33,6 +33,10 @@ namespace LazyPingerMAUI.ViewModels
         [ObservableProperty]
         public ObservableCollection<VmDevicePing> devicesPing;
 
+        public IEnumerable<string> ExistingColors { get; set; } = ["Red", "Green", "Blue"];
+
+        public IEnumerable<string> ExistingGroups { get; set; } = ["Unknown", "Test1", "Test2"];
+
         public INetworkService NetworkService { get; set; }
 
         private const int Total_Device_Number = 30000; 

@@ -9,6 +9,8 @@ namespace LazyPingerMAUI.ViewModels
     {
         public MainViewModel MainVm { get; set; }
 
+        public VmDevicePing VmDevicePingTemp { get; set; }
+
         public SettingsViewModel(INetworkService networkService, MainViewModel mainViewModel)
         {
             MainVm = mainViewModel;
