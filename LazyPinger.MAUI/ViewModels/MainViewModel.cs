@@ -6,6 +6,7 @@ using LazyPinger.Base.Models;
 using LazyPinger.Base.Models.Devices;
 using LazyPinger.Core.Utils;
 using LazyPinger.Core.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Net.Sockets;
 using System.Reflection.Metadata;
@@ -29,6 +30,9 @@ namespace LazyPingerMAUI.ViewModels
         [ObservableProperty]
         public VmUserSelection userSelection;
 
+        [ObservableProperty]
+        public ObservableCollection<VmDevicePing> devicesPing;
+
         public INetworkService NetworkService { get; set; }
 
         private const int Total_Device_Number = 30000; 
@@ -45,15 +49,26 @@ namespace LazyPingerMAUI.ViewModels
         {
             var db = ListenVm.Instance.dbContext;
 
+            var devicesPing = db.DevicePings.Include(o => o.DevicesGroup).ToList().Select( (o) => new VmDevicePing(o)
+            { Name = o.Name, 
+              Image = o.Image,
+              Group = o.DevicesGroup
+            }).ToList();
+
+            DevicesPing = new ObservableCollection<VmDevicePing>(devicesPing);
+
             var userSelection = db.UserSelections.FirstOrDefault();
 
             if (userSelection is null)
             {
-                db.Add(new UserSelection { AutoRun = true, FastPing = true});
+                db.Add(new UserSelection { AutoRun = true, FastPing = true });
                 await db.SaveChangesAsync();
             }
 
             userSelection = db.UserSelections.FirstOrDefault();
+
+            if (userSelection is null)
+                return;
 
             UserSelection = new VmUserSelection(userSelection);
         }
