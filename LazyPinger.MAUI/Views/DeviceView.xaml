@@ -12,11 +12,23 @@
 
                 <Border Grid.Row="0" 
                         x:DataType="models:DevicePing"
+                        StrokeShape="RoundRectangle 0,0,0,0"
+                        StrokeThickness="3"
                         Stroke="{StaticResource PrimaryDarkAlternative}">
 
-                    <Image WidthRequest="125"
+                    <VerticalStackLayout>
+                        <Image WidthRequest="125"
                            HeightRequest="125" 
                            Source="{Binding Image}"/>
+
+                        <Line StrokeThickness="5" 
+                              X1="0"
+                              Y1="0"
+                              X2="2000"
+                              Y2="0"
+                              Stroke="{StaticResource SecondaryDarkText}">
+                        </Line>
+                    </VerticalStackLayout>
                 </Border>
 
                 <StackLayout VerticalOptions="Center" 

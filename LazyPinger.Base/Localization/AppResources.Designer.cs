@@ -61,6 +61,15 @@ namespace LazyPinger.Base.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LazyPinger, as lazy as possible.
+        /// </summary>
+        public static string HeaderTitle {
+            get {
+                return ResourceManager.GetString("HeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hola senior.
         /// </summary>
         public static string LazySlogan {

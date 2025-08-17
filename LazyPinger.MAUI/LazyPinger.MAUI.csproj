@@ -125,4 +125,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="PublishProfiles\" />
+	</ItemGroup>
+
 </Project>
