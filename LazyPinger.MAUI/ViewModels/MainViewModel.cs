@@ -33,8 +33,8 @@ namespace LazyPingerMAUI.ViewModels
         [ObservableProperty]
         public ObservableCollection<VmDevicePing> devicesPing;
 
-        [ObservableProperty]
-        public ObservableCollection<VmDevicesGroup> devicesGroup;
+        //[ObservableProperty]
+        //public ObservableCollection<VmDevicesGroup> devicesGroup;
 
         public IEnumerable<string> ExistingColors { get; set; } = ["Red", "Green", "Blue"];
 
@@ -73,15 +73,7 @@ namespace LazyPingerMAUI.ViewModels
                 await db.SaveChangesAsync();
             }
 
-            var devicesGroups = db.DevicesGroups.Include(o => o.DevicePings).ToList().Select((o) => new VmDevicesGroup(o)
-            {
-                Color = o.Color,
-                Type = o.Type
-            }).ToList();
-
-            DevicesGroup = new ObservableCollection<VmDevicesGroup>(devicesGroups);
-
-            var res = devicesGroups.First().Entity;
+            var res = ListenVm.Instance.DevicesGroup.First().Entity;
 
             userSelection = db.UserSelections.FirstOrDefault();
 

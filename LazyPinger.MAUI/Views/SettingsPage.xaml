@@ -4,6 +4,7 @@
              xmlns:views="clr-namespace:LazyPingerMAUI.Views"
              xmlns:vm="clr-namespace:LazyPingerMAUI.ViewModels"
              xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
+             xmlns:vmcore="clr-namespace:LazyPinger.Core.ViewModels;assembly=LazyPinger.Core"
              x:Class="LazyPingerMAUI.Views.SettingsPage"
              x:DataType="vm:SettingsViewModel">
 
@@ -78,7 +79,7 @@
                                 <Label Margin="20, 0, 0, 10" Text="Device Group"/>
                                 <Picker Margin="20"
                                         ItemDisplayBinding="{Binding Type}"
-                                        ItemsSource="{Binding MainVm.DevicesGroup}"
+                                        ItemsSource="{Binding DevicesGroup, Source={x:Static vmcore:ListenVm.Instance}}"
                                         SelectedItem="{Binding VmDeviceGroupTemp}">
                                 </Picker>
                             </StackLayout>

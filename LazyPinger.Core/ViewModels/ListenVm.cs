@@ -1,6 +1,7 @@
 ﻿using LazyPinger.Base.Models;
 using LazyPinger.Base.Models.Devices;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 namespace LazyPinger.Core.ViewModels
 {
@@ -29,6 +30,34 @@ namespace LazyPinger.Core.ViewModels
             }
         }
 
+        private IEnumerable<VmDevicesGroup> devicesGroup;
+
+        public IEnumerable<VmDevicesGroup> DevicesGroup
+        {
+            get
+            {
+                if (devicesGroup is not null)
+                    return devicesGroup;
+
+                var devicesGroups = dbContext.DevicesGroups.Include(o => o.DevicePings).ToList().Select((o) => new VmDevicesGroup(o)
+                {
+                    Color = o.Color,
+                    Type = o.Type
+                }).ToList();
+
+                return devicesGroups;
+            }
+            init
+            {
+                var devicesGroups = dbContext.DevicesGroups.Include(o => o.DevicePings).ToList().Select((o) => new VmDevicesGroup(o)
+                {
+                    Color = o.Color,
+                    Type = o.Type
+                }).ToList();
+
+                devicesGroup = devicesGroups;
+            }
+        }
 
         public VmUserSelection UserSelections
         {
