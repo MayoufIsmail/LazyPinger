@@ -102,3 +102,6 @@ jobs:
           name: Release v1.0.${{ github.run_number }}
           body: |
             Automated release for build ${{ github.run_number }}.
+
+#V1
+          
