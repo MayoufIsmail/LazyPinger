@@ -73,8 +73,9 @@
                             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
                                 <Label Margin="20, 0, 0, 10" Text="Device Group"/>
                                 <Picker Margin="20"
+                                        ItemDisplayBinding="{Binding Type}"
                                         ItemsSource="{Binding MainVm.DevicesGroup}"
-                                        SelectedItem="{Binding DeviceGroupTemp}">
+                                        SelectedItem="{Binding VmDeviceGroupTemp}">
                                 </Picker>
                             </StackLayout>
 

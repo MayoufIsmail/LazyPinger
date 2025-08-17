@@ -12,8 +12,9 @@ namespace LazyPingerMAUI.ViewModels
 
         public DevicePing DevicePingTemp { get; set; } = new();
 
-        public VmDevicesGroup DeviceGroupTemp { get; set; }
+        public DevicesGroup DeviceGroupTemp { get; set; } = new();
 
+        public VmDevicesGroup VmDeviceGroupTemp { get; set; }
 
         public SettingsViewModel(INetworkService networkService, MainViewModel mainViewModel)
         {
@@ -27,7 +28,7 @@ namespace LazyPingerMAUI.ViewModels
             var newDevice = new DevicePing()
             {
                 Name = DevicePingTemp.Name,
-                DevicesGroup = DeviceGroupTemp.Entity,
+                DevicesGroup = VmDeviceGroupTemp.Entity,
                 Image = DevicePingTemp.Image,
             };
 
@@ -47,7 +48,7 @@ namespace LazyPingerMAUI.ViewModels
         public async Task CreateNewDeviceGroup()
         {
             var db = ListenVm.Instance.dbContext;
-            db.DevicesGroups.Add(DeviceGroupTemp.Entity);
+            db.DevicesGroups.Add(DeviceGroupTemp);
 
             try
             {
