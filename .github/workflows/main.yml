@@ -1,0 +1,104 @@
+name: Build, Test, and Release MAUI for Windows
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  #Job-1
+  lint:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Check Code Formatting
+        run: dotnet format --verify-no-changes --verbosity detailed
+        continue-on-error: true
+  #Job2
+  build:
+    needs: lint # This job will start after the 'lint' job is complete!
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+      - name: Install .NET MAUI Workloads
+        run: dotnet workload restore
+      - name: Build and Publish
+        run: dotnet publish LazyPinger.MAUI/LazyPinger.MAUI.csproj -f net8.0-windows10.0.19041.0 -c Release -o ./publish
+      - name: Upload Application Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: LazyPinger-Windows
+          path: ./publish
+
+  #Job-3 TEST 
+  test:
+    needs: build # This job will start after the 'build' job succeeds.
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+      - name: Install .NET MAUI Workloads
+        run: dotnet workload restore
+      - name: Run Tests
+        run: dotnet test LazyPinger.Tests/LazyPinger.Tests.csproj -c Release --logger "trx;logfilename=test-results.trx" --results-directory "./TestResults"
+      - name: Publish Test Results
+        uses: dorny/test-reporter@v1
+        with:
+          name: Test Results
+          path: "TestResults/test-results.trx"
+          reporter: dotnet-trx
+          fail-on-error: true
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: LazyPinger-Test-Results
+          path: 'TestResults'
+
+  #Job 4
+  release:
+    needs: test # This job will start after the 'test' job succeeds.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: windows-latest
+    steps:
+      - name: Download Application Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: LazyPinger-Windows
+          path: ./publish
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./publish/*
+          tag_name: v1.0.${{ github.run_number }}
+          name: Release v1.0.${{ github.run_number }}
+          body: |
+            Automated release for build ${{ github.run_number }}.
