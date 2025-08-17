@@ -71,10 +71,16 @@
                                         SelectedItem="{Binding DevicePingTemp.Image}"/>
                             </StackLayout>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+                                <Label Margin="20, 0, 0, 10" Text="IP"/>
+                                <Entry Margin="20" Text="{Binding DevicePingTemp.IP}"/>
+                            </StackLayout>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
                                 <Label Margin="20, 0, 0, 10" Text="Device Group"/>
-                                <Picker Margin="20" 
-                                        ItemsSource="{Binding MainVm.ExistingGroups}"
-                                        SelectedItem="{Binding DevicePingTemp.DevicesGroup}"/>
+                                <Picker Margin="20"
+                                        ItemDisplayBinding="{Binding Type}"
+                                        ItemsSource="{Binding MainVm.DevicesGroup}"
+                                        SelectedItem="{Binding VmDeviceGroupTemp}">
+                                </Picker>
                             </StackLayout>
 
                             <Button Margin="20" 
@@ -113,7 +119,8 @@
 
                             <Button Margin="20"
                                     Command="{Binding CreateNewDeviceGroupCommand}"
-                                    Text="Create"></Button>
+                                    Text="Create">
+                            </Button>
                         </FlexLayout>
                     </Border>
                 </Grid>

@@ -15,6 +15,7 @@ namespace LazyPinger.Core.ViewModels
             Name = Entity.Name;
             Image = Entity.Image;
             Group = Entity.DevicesGroup;
+            Ip = Entity?.IP;
         }
 
         [ObservableProperty]
@@ -26,20 +27,21 @@ namespace LazyPinger.Core.ViewModels
         [ObservableProperty]
         public string name;
 
-        partial void OnNameChanged(string value)
-        {
-            this.Entity.Name = value;
-        }
+        [ObservableProperty]
+        public string ip;
 
-        partial void OnImageChanged(string value)
-        {
-            this.Entity.Image = value;
-        }
-
-        partial void OnGroupChanged(DevicesGroup value)
-        {
+        partial void OnGroupChanged(DevicesGroup value) =>
             this.Entity.DevicesGroup = value;
-        }
+
+        partial void OnNameChanged(string value) =>
+            this.Entity.Name = value;
+
+        partial void OnImageChanged(string value) =>
+            this.Entity.Image = value;
+
+        partial void OnIpChanged(string value) =>
+            this.Entity.IP = value;
+
 
     }
 }

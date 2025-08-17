@@ -11,6 +11,6 @@ namespace LazyPinger.Base.Models.Devices
 
         public string Color { get; set; } = "FFFFFF";
 
-        List<DevicePing> DevicePings { get; set; } = new();
+        public List<DevicePing> DevicePings { get; set; } = new();
     }
 }

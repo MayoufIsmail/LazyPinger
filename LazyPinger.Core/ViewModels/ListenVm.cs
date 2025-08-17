@@ -1,4 +1,5 @@
 ﻿using LazyPinger.Base.Models;
+using LazyPinger.Base.Models.Devices;
 using Microsoft.EntityFrameworkCore;
 
 namespace LazyPinger.Core.ViewModels
@@ -11,6 +12,23 @@ namespace LazyPinger.Core.ViewModels
         public LazyPingerDbContext dbContext { get; set; } = new();
 
         private ListenVm() { }
+
+        public IEnumerable<DevicesGroup> DevicesGroups
+        {
+            get
+            {
+                return dbContext.DevicesGroups.Include(o => o.DevicePings).ToList();
+            }
+        }
+
+        public IEnumerable<DevicePing> DevicesPing
+        {
+            get
+            {
+                return dbContext.DevicePings.Include(o => o.DevicesGroup).ToList();
+            }
+        }
+
 
         public VmUserSelection UserSelections
         {
