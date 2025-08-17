@@ -1,6 +1,7 @@
 ﻿using LazyPinger.Base.IServices;
 using LazyPinger.Base.Models.Devices;
 using LazyPinger.Base.Models.Network;
+using LazyPinger.Core.ViewModels;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -96,17 +97,22 @@ namespace LazyPinger.Core.Services
                 //var arpDetector = new(ipAddressToPing)
                 //await ArpDetectorService.ArpInit();
 
+                var devicesPings = ListenVm.Instance.DevicesPing;
+
                 if (foundDevices.ToList().Exists(o => o.IP == foundIP))
                     continue;
+
+                var found = devicesPings.Where(o => o.IP == foundIP).FirstOrDefault();
 
                 foundDevices.Add(new DevicePing()
                 {
                     ID = foundDevices.Count,
-                    Name = "Device" + i,
+                    Name = (found is null ) ? "Device" + i : found.Name,
                     IP = foundIP,
-                    Description = "-",
+                    Description = found?.Description,
                     MacAddress = "XX:XX:XX:XX:XX",
-                    Type = "Unknown",
+                    Type = (found is null )? DeviceType.Unknown.ToString() : found.DevicesGroup.Type,
+                    Color = (found is null) ? DeviceType.Unknown.ToString() : found.DevicesGroup.Color,
                     Port = "-",
                     AnswerTime = $"{sendPing.RoundtripTime}ms",
                 });

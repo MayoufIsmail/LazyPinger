@@ -30,6 +30,7 @@ namespace LazyPingerMAUI.ViewModels
                 Name = DevicePingTemp.Name,
                 DevicesGroup = VmDeviceGroupTemp.Entity,
                 Image = DevicePingTemp.Image,
+                IP = DevicePingTemp.IP,
             };
 
             db.DevicePings.Add(newDevice);

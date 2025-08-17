@@ -71,6 +71,10 @@
                                         SelectedItem="{Binding DevicePingTemp.Image}"/>
                             </StackLayout>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+                                <Label Margin="20, 0, 0, 10" Text="IP"/>
+                                <Entry Margin="20" Text="{Binding DevicePingTemp.IP}"/>
+                            </StackLayout>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
                                 <Label Margin="20, 0, 0, 10" Text="Device Group"/>
                                 <Picker Margin="20"
                                         ItemDisplayBinding="{Binding Type}"

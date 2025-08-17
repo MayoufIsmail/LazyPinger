@@ -59,7 +59,8 @@ namespace LazyPingerMAUI.ViewModels
             var devicesPing = db.DevicePings.Include(o => o.DevicesGroup).ToList().Select( (o) => new VmDevicePing(o)
             { Name = o.Name, 
               Image = o.Image,
-              Group = o.DevicesGroup
+              Group = o.DevicesGroup,
+              Ip = o?.IP,
             }).ToList();
 
             DevicesPing = new ObservableCollection<VmDevicePing>(devicesPing);
