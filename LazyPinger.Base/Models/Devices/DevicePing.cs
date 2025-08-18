@@ -31,7 +31,7 @@ namespace LazyPinger.Base.Models.Devices
         public string Color { get; set; } = "#212121";
 
         [Required]
-        public string Image { get; set; } = "pcb_default.png";
+        public byte[]? Image { get; set; }
 
         public string? AnswerTime { get; set; } = "0ms";
 

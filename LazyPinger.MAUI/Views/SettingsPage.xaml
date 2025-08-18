@@ -26,6 +26,8 @@
                       ColumnDefinitions="*, *" 
                       HorizontalOptions="Center">
 
+                    <!-- User Selection -->
+                    
                     <FlexLayout   Direction="Column"
                                   JustifyContent="Center"
                                   Grid.Row="0"
@@ -50,6 +52,8 @@
                         </Border>
                     </FlexLayout>
 
+                    <!-- Device Ping  -->
+                    
                     <Border    Grid.Row="1"
                                Grid.Column="0" 
                                Margin="20"
@@ -89,6 +93,8 @@
                                     Command="{Binding CreateNewDeviceCommand}"/>
                         </FlexLayout>
                     </Border>
+
+                    <!-- Device Group -->
 
                     <Border Stroke="{StaticResource Primary}"
                             Grid.Row="1"

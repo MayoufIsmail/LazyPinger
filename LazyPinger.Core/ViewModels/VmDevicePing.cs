@@ -22,7 +22,7 @@ namespace LazyPinger.Core.ViewModels
         public DevicesGroup group;
 
         [ObservableProperty]
-        public string image;
+        public byte[] image;
 
         [ObservableProperty]
         public string name;
@@ -36,7 +36,7 @@ namespace LazyPinger.Core.ViewModels
         partial void OnNameChanged(string value) =>
             this.Entity.Name = value;
 
-        partial void OnImageChanged(string value) =>
+        partial void OnImageChanged(byte[] value) =>
             this.Entity.Image = value;
 
         partial void OnIpChanged(string value) =>
