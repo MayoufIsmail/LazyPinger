@@ -1,14 +1,4 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=alert_status&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action)
-
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=bugs&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action)
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=coverage&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action)
-
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=ncloc&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action)
-
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=security_rating&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action)
-
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=vulnerabilities&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=alert_status&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=bugs&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=coverage&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=ncloc&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=security_rating&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=MayoufIsmail_LazyPinger-Action&metric=vulnerabilities&token=3d29cb911657d7dc38a501ed5017fbd81e3b2268)](https://sonarcloud.io/summary/new_code?id=MayoufIsmail_LazyPinger-Action)
 # LazyPinger
 ## A very fast C# pinger with a nice UI
 ## Are you tired of old pingers 😿 that are slow and have a very outdated UI? Then this is your new pinger tool 🤖!"
