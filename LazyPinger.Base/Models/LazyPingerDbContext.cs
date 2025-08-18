@@ -8,7 +8,8 @@ namespace LazyPinger.Base.Models;
 
 public partial class LazyPingerDbContext : DbContext
 {
-    private const string DbFilePath = "Data Source = C:\\Users\\Admin\\Documents\\Github\\LazyPinger\\LazyPinger.Base\\lazypinger_database.db";
+    private static readonly string DbFilePath = $"Data Source={Path.Combine(AppContext.BaseDirectory, "lazypinger_database.db")}";
+
 
     public LazyPingerDbContext()
     {
