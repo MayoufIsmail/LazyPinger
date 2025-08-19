@@ -33,10 +33,11 @@ namespace LazyPingerMAUI.ViewModels
                 IP = DevicePingTemp.IP,
             };
 
-            db.DevicePings.Add(newDevice);
+            MainVm.DevicesPing.Add(new VmDevicePing(newDevice));
 
             try
             {
+                db.DevicePings.Add(newDevice);
                 await db.SaveChangesAsync();
             }
 
@@ -49,10 +50,10 @@ namespace LazyPingerMAUI.ViewModels
         public async Task CreateNewDeviceGroup()
         {
             var db = ListenVm.Instance.dbContext;
-            db.DevicesGroups.Add(DeviceGroupTemp);
 
             try
             {
+                db.DevicesGroups.Add(DeviceGroupTemp);
                 await db.SaveChangesAsync();
             }
 
@@ -66,10 +67,9 @@ namespace LazyPingerMAUI.ViewModels
         [RelayCommand]
         public async Task ApplyUserSelection()
         {
-            var res = ListenVm.Instance.UserSelections.Entity;
-
             try
             {
+                var res = ListenVm.Instance.UserSelectionsVm.Entity;
                 await ListenVm.Instance.dbContext.SaveChangesAsync();
             }
             catch

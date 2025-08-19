@@ -14,11 +14,11 @@ namespace LazyPinger.Core.ViewModels
 
         private ListenVm() { }
 
-        public IEnumerable<DevicesGroup> DevicesGroups
+        public IEnumerable<DevicesGroup> DevicesGroup
         {
             get
             {
-                return dbContext.DevicesGroups.Include(o => o.DevicePings).ToList();
+                return GetDevicesGroup();
             }
         }
 
@@ -26,58 +26,79 @@ namespace LazyPinger.Core.ViewModels
         {
             get
             {
-                return dbContext.DevicePings.Include(o => o.DevicesGroup).ToList();
+                return GetDevicePing();
             }
         }
 
-        private IEnumerable<VmDevicesGroup> devicesGroup;
-
-        public IEnumerable<VmDevicesGroup> DevicesGroup
+        public IEnumerable<VmDevicesGroup> DevicesGroupVm
         {
             get
             {
-                if (devicesGroup is not null)
-                    return devicesGroup;
+                return GetDevicesGroupVm();
+            }
+        }
 
-                var devicesGroups = dbContext.DevicesGroups.Include(o => o.DevicePings).ToList().Select((o) => new VmDevicesGroup(o)
+        public VmUserSelection? UserSelectionsVm
+        {
+            get
+            {
+                return GetUserSelectionVm();
+            }
+        }
+
+
+        public List<DevicesGroup> GetDevicesGroup()
+        {
+            try
+            {
+                return dbContext.DevicesGroups.Include(o => o.DevicePings).ToList();
+            }
+            catch (Exception ex)
+            {
+                return new();
+            }
+        }
+
+        public List<VmDevicesGroup> GetDevicesGroupVm()
+        {
+            try
+            {
+                return dbContext.DevicesGroups.Include(o => o.DevicePings).ToList().Select((o) => new VmDevicesGroup(o)
                 {
                     Color = o.Color,
                     Type = o.Type
                 }).ToList();
-
-                return devicesGroups;
             }
-            init
+            catch (Exception ex)
             {
-                var devicesGroups = dbContext.DevicesGroups.Include(o => o.DevicePings).ToList().Select((o) => new VmDevicesGroup(o)
-                {
-                    Color = o.Color,
-                    Type = o.Type
-                }).ToList();
-
-                devicesGroup = devicesGroups;
+                return new();
             }
         }
 
-        public VmUserSelection UserSelections
+        public List<DevicePing> GetDevicePing()
         {
-            get
+            try
             {
-                using var db = new LazyPingerDbContext();
+                return dbContext.DevicePings.Include(o => o.DevicesGroup).ToList() ?? new List<DevicePing>();
+            }
+            catch (Exception ex)
+            {
+                return new();
+            }
+        }
 
-                var res = db.UserSelections.FirstOrDefault();
-
-                //if (res is null)
-                    //return new VmUserSelection();
-
+        public VmUserSelection? GetUserSelectionVm()
+        {
+            try
+            {
+                var res = dbContext.UserSelections.FirstOrDefault();
+                if (res == null) return null;
                 return new VmUserSelection(res);
             }
-            set
+            catch (Exception ex)
             {
-
+                return null;
             }
         }
-
-
     }
 }

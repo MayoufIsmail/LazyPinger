@@ -6,6 +6,7 @@
     xmlns:views="clr-namespace:LazyPingerMAUI.Views"
     Shell.FlyoutBehavior="Flyout"
     Shell.NavBarIsVisible="False"
+   Shell.BackgroundColor="DarkGoldenrod"
     Title="Lazy Pinger - as fast as possible">
 
     <!--<ShellContent
