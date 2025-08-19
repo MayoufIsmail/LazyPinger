@@ -73,7 +73,7 @@ namespace LazyPingerMAUI.ViewModels
                 await db.SaveChangesAsync();
             }
 
-            var res = ListenVm.Instance.DevicesGroup.First().Entity;
+            var res = ListenVm.Instance.DevicesGroupVm.First().Entity;
 
             userSelection = db.UserSelections.FirstOrDefault();
 

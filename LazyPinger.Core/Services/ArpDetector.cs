@@ -33,6 +33,7 @@ public class ArpDetectorService : IArpDetectorService
         ArpType.Type = TypeFinder();
     }
 
+
     private string TypeFinder()
     {
         string foundType = "Unknown";
@@ -47,6 +48,7 @@ public class ArpDetectorService : IArpDetectorService
 
         return foundType;
     }
+
     
     private async Task<string> HostFinder()
     {

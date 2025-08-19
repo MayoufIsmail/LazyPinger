@@ -2,6 +2,7 @@
 using LazyPinger.Base.Models;
 using LazyPinger.Base.Models.Devices;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 namespace LazyPinger.Core.ViewModels
 {
@@ -12,10 +13,10 @@ namespace LazyPinger.Core.ViewModels
 
         public LazyPingerDbContext dbContext { get; set; } = new();
 
-        private ListenVm() { }
+        private ListenVm() {  }
 
-        public IEnumerable<DevicesGroup> devicesGroup;
-        public IEnumerable<DevicesGroup> DevicesGroup
+        public ObservableCollection<DevicesGroup> devicesGroup;
+        public ObservableCollection<DevicesGroup> DevicesGroup
         {
             get
             {
@@ -29,8 +30,8 @@ namespace LazyPinger.Core.ViewModels
             }
         }
 
-        private IEnumerable<DevicePing> devicesPing;
-        public IEnumerable<DevicePing> DevicesPing
+        private ObservableCollection<DevicePing> devicesPing;
+        public ObservableCollection<DevicePing> DevicesPing
         {
             get
             {
@@ -44,8 +45,8 @@ namespace LazyPinger.Core.ViewModels
             }
         }
 
-        private IEnumerable<VmDevicesGroup> devicesGroupVm;
-        public IEnumerable<VmDevicesGroup> DevicesGroupVm
+        private ObservableCollection<VmDevicesGroup> devicesGroupVm;
+        public ObservableCollection<VmDevicesGroup> DevicesGroupVm
         {
             get
             {
@@ -82,8 +83,8 @@ namespace LazyPinger.Core.ViewModels
                 try
                 {
                     var res = dbContext.DevicesGroups.Include(o => o.DevicePings).ToList();
-                    DevicesGroup = res;
-                    Instance.DevicesGroupVm = res.Select(o => new VmDevicesGroup(o));
+                    Instance.DevicesGroup = new ObservableCollection<DevicesGroup>(res);
+                    Instance.DevicesGroupVm = new ObservableCollection<VmDevicesGroup>(res.Select(o => new VmDevicesGroup(o)));
                 }
                 catch (Exception ex)
                 {
@@ -104,7 +105,7 @@ namespace LazyPinger.Core.ViewModels
                         Type = o.Type
                     }).ToList();
 
-                    DevicesGroupVm = res;
+                    DevicesGroupVm = new ObservableCollection<VmDevicesGroup>(res);
                 }
                 catch (Exception ex)
                 {
@@ -120,7 +121,7 @@ namespace LazyPinger.Core.ViewModels
                 try
                 {
                     var res = dbContext.DevicePings.Include(o => o.DevicesGroup).ToList();
-                    DevicesPing = res;
+                    DevicesPing = new ObservableCollection<DevicePing>(res);
                 }
                 catch (Exception ex)
                 {

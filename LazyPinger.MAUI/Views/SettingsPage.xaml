@@ -83,7 +83,7 @@
                                 <Label Margin="20, 0, 0, 10" Text="Device Group"/>
                                 <Picker Margin="20"
                                         ItemDisplayBinding="{Binding Type}"
-                                        ItemsSource="{Binding DevicesGroup, Source={x:Static vmcore:ListenVm.Instance}}"
+                                        ItemsSource="{Binding DevicesGroupVm, Source={x:Static vmcore:ListenVm.Instance}}"
                                         SelectedItem="{Binding VmDeviceGroupTemp}">
                                 </Picker>
                             </StackLayout>
@@ -130,6 +130,7 @@
                             </Button>
                         </FlexLayout>
                     </Border>
+                    
                 </Grid>
             </ScrollView>
         </Grid>

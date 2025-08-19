@@ -39,6 +39,7 @@ namespace LazyPingerMAUI.ViewModels
             {
                 db.DevicePings.Add(newDevice);
                 await db.SaveChangesAsync();
+                ListenVm.ReloadFromDatabase(newDevice);
             }
 
             catch (Exception ex) {
@@ -53,8 +54,9 @@ namespace LazyPingerMAUI.ViewModels
 
             try
             {
-                db.DevicesGroups.Add(DeviceGroupTemp);
+                db.DevicesGroups.Add( new() { Color = DeviceGroupTemp.Color, Type = DeviceGroupTemp.Type });
                 await db.SaveChangesAsync();
+                ListenVm.ReloadFromDatabase(DeviceGroupTemp);
             }
 
             catch (Exception ex)
@@ -71,6 +73,7 @@ namespace LazyPingerMAUI.ViewModels
             {
                 var res = ListenVm.Instance.UserSelectionsVm.Entity;
                 await ListenVm.Instance.dbContext.SaveChangesAsync();
+                ListenVm.ReloadFromDatabase(res);
             }
             catch
             {

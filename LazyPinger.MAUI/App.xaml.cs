@@ -10,10 +10,10 @@ namespace LazyPingerMAUI
         {
             InitializeComponent();
 
-            //if (Application.Current is not null)
-            //{
-            //    Application.Current.UserAppTheme = AppTheme.Dark;
-            //}
+            if (Application.Current is not null)
+            {
+                Application.Current.UserAppTheme = AppTheme.Dark;
+            }
 
             MainPage = new AppShell();
             Services = services;
