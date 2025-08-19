@@ -6,7 +6,7 @@
              xmlns:devices="clr-namespace:LazyPinger.Base.Models.Devices;assembly=LazyPinger.Base"
              xmlns:strings="clr-namespace:LazyPinger.Base.Localization;assembly=LazyPinger.Base"
              x:Class="LazyPingerMAUI.Views.MainPage"
-             Background="{StaticResource GreyGradient}"
+             Background="{AppThemeBinding Light={StaticResource WhiteGradient}, Dark={StaticResource GreyGradient}}"
              x:DataType="vm:MainViewModel">
 
     <Grid RowDefinitions="125, *">

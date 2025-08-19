@@ -6,7 +6,7 @@
 
     <!-- Colors -->
 
-    <Color x:Key="Primary">#ff9e7900</Color>
+    <Color x:Key="Primary">#ffc300</Color>
     <Color x:Key="PrimaryDark">#ffc300</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
     <Color x:Key="Secondary">#003566</Color>
@@ -27,8 +27,7 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
-    <Color x:Key="Gray700T">#50141414</Color>
-
+    <Color x:Key="Gray700">#303030</Color>
 
     <!-- Gradients -->
     
@@ -38,8 +37,13 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="GreyGradient" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="{StaticResource Gray700T}" Offset="0.0" />
+        <GradientStop Color="{StaticResource Gray900}" Offset="0.0" />
         <GradientStop Color="{StaticResource Gray950}" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="WhiteGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource White}" Offset="0.0" />
+        <GradientStop Color="{StaticResource Gray100}" Offset="1.0" />
     </LinearGradientBrush>
 
     <!-- Brushes -->
@@ -60,6 +64,6 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
-    <SolidColorBrush x:Key="Gray700TBrush" Color="{StaticResource Gray700T}"/>
+    <SolidColorBrush x:Key="Gray700Brush" Color="{StaticResource Gray700}"/>
 
 </ResourceDictionary>

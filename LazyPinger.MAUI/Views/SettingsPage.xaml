@@ -6,6 +6,7 @@
              xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
              xmlns:vmcore="clr-namespace:LazyPinger.Core.ViewModels;assembly=LazyPinger.Core"
              x:Class="LazyPingerMAUI.Views.SettingsPage"
+             Background="{AppThemeBinding Light={StaticResource WhiteGradient}, Dark={StaticResource GreyGradient}}"
              x:DataType="vm:SettingsViewModel">
 
     <ScrollView>

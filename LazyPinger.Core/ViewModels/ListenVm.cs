@@ -13,7 +13,7 @@ namespace LazyPinger.Core.ViewModels
 
         public LazyPingerDbContext dbContext { get; set; } = new();
 
-        private ListenVm() {  }
+        private ListenVm() { }
 
         public ObservableCollection<DevicesGroup> devicesGroup;
         public ObservableCollection<DevicesGroup> DevicesGroup
@@ -144,6 +144,12 @@ namespace LazyPinger.Core.ViewModels
                     Console.WriteLine($"Failed to load UserSelections from Database: {ex.Message}");
                 }
             };
+        }
+        public static void LoadAll()
+        {
+            List<Action> action = [ Instance.GetUserSelectionVm(), Instance.GetDevicesGroup(), Instance.GetDevicesGroupVm(), Instance.GetDevicePing() ];
+
+            action.ToList().ForEach( o => o.Invoke());
         }
 
         public static void ReloadFromDatabase(object type)

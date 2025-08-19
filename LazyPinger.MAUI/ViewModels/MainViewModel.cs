@@ -86,6 +86,7 @@ namespace LazyPingerMAUI.ViewModels
         private void InitMainVm(INetworkService networkService)
         {
             MainThread.InvokeOnMainThreadAsync(async () => {
+                 ListenVm.LoadAll();
                  await networkService.InitNetworkSettings();
                  var addresses = networkService.NetworkSettings.HostAddresses.Where(o => o.AddressFamily == AddressFamily.InterNetwork).Select(o => o.ToString());
                  DetectedNetworkInterfaces = new ObservableCollection<string>(addresses);
