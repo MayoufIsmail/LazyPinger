@@ -113,9 +113,12 @@ namespace LazyPingerMAUI.ViewModels
         }
 
         [RelayCommand]
-        public void PingAll()
+        public void PingAll(bool isRestart)
         {
             MainThread.InvokeOnMainThreadAsync(async () => {
+                if (isRestart)
+                    DetectedDevices.Clear();
+
                 await NetworkService.PingAll(ref detectedDevices);
             });
         }

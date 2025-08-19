@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:LazyPingerMAUI.ViewModels"
              xmlns:devices="clr-namespace:LazyPinger.Base.Models.Devices;assembly=LazyPinger.Base"
              xmlns:strings="clr-namespace:LazyPinger.Base.Localization;assembly=LazyPinger.Base"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="LazyPingerMAUI.Views.MainPage"
              Background="{AppThemeBinding Light={StaticResource WhiteGradient}, Dark={StaticResource GreyGradient}}"
              x:DataType="vm:MainViewModel">
@@ -16,9 +17,9 @@
                          HorizontalOptions="Fill"
                          Background="{StaticResource Tertiary}">
             <Label Style="{StaticResource Headline}" 
-               TextColor="{StaticResource Primary}"
-               Margin="10"
-               Text="{x:Static strings:AppResources.LazySlogan}">
+                   TextColor="{StaticResource Primary}"
+                   Margin="0, 50, 0, 0"
+                   Text="{x:Static strings:AppResources.LazySlogan}">
             </Label>
         </VerticalStackLayout>
         
@@ -80,12 +81,20 @@
                             IsEnabled="{Binding UserSelection.IsAutoRunDisabled}"
                             Command="{Binding PingAllCommand}"
                             Text="Ping"
-                            FlexLayout.Grow="1"/>
+                            FlexLayout.Grow="1">
+                        <Button.CommandParameter>
+                            <sys:Boolean>False</sys:Boolean>
+                        </Button.CommandParameter>
+                    </Button>
 
                     <Button Margin="5"
                             Command="{Binding PingAllCommand}"
                             Text="Restart"
-                            FlexLayout.Grow="1"/>
+                            FlexLayout.Grow="1">
+                        <Button.CommandParameter>
+                            <sys:Boolean>True</sys:Boolean>
+                        </Button.CommandParameter>
+                    </Button>
                     
                     <Button Margin="5"
                             IsEnabled="{Binding UserSelection.IsAutoRunDisabled}"

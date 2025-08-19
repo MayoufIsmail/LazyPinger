@@ -46,13 +46,15 @@
                     </VisualState>
                     <VisualState x:Name="PointerOver">
                         <VisualState.Setters>
-                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource PrimaryDark}, Dark={StaticResource Primary}}" />
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource PrimaryDark}, Dark={StaticResource PrimaryDarkBlack}}" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="Pressed">
                         <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
                             <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource SecondaryDarkText}, Dark={StaticResource Secondary}}" />
-                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDarkText}}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -453,36 +455,5 @@
         <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
-
-     <ControlTemplate x:Key="DeviceCustomView">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100*" />
-                </Grid.ColumnDefinitions>
-                <Image Source="{TemplateBinding IconImageSource}"
-                       BackgroundColor="{TemplateBinding IconBackgroundColor}"
-                       WidthRequest="100"
-                       HeightRequest="100"
-                       Aspect="AspectFill"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
-                <StackLayout Grid.Column="1">
-                    <Label Text="{TemplateBinding CardTitle}"
-                           FontAttributes="Bold" />
-                    <Label Text="{TemplateBinding CardDescription}" />
-                </StackLayout>
-            </Grid>
-      </ControlTemplate>
-
-    <ControlTemplate x:Key="DevicesGroupPickerView" >
-        <Grid>
-            <Label Text="{Binding Type}"></Label>
-        </Grid>
-    </ControlTemplate>
-
 
 </ResourceDictionary>

@@ -5,23 +5,25 @@
              xmlns:vm="clr-namespace:LazyPingerMAUI.ViewModels"
              xmlns:models="clr-namespace:LazyPinger.Base.Models;assembly=LazyPinger.Base"
              xmlns:vmcore="clr-namespace:LazyPinger.Core.ViewModels;assembly=LazyPinger.Core"
+             xmlns:strings="clr-namespace:LazyPinger.Base.Localization;assembly=LazyPinger.Base"
              x:Class="LazyPingerMAUI.Views.SettingsPage"
              Background="{AppThemeBinding Light={StaticResource WhiteGradient}, Dark={StaticResource GreyGradient}}"
              x:DataType="vm:SettingsViewModel">
 
-    <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*">
+    <Grid RowDefinitions="125, *">
+        
             <VerticalStackLayout Grid.Row="0" 
-                                 HorizontalOptions="Fill"
-                                 Padding="20"
-                                 Background="{StaticResource Tertiary}">
+                         VerticalOptions="Fill"
+                         HorizontalOptions="Fill"
+                         Background="{StaticResource Tertiary}">
                 <Label Style="{StaticResource Headline}" 
-                       TextColor="{StaticResource Primary}"
-                       Text="">
+                   TextColor="{StaticResource Primary}"
+                   Margin="0, 50, 0, 0"
+                   Text="{x:Static strings:AppResources.LazySlogan}">
                 </Label>
             </VerticalStackLayout>
 
-            <ScrollView Grid.Row="1">
+            <ScrollView Grid.Row="1" Margin="0, 25, 0, 0">
                 
                 <Grid RowDefinitions="Auto, *" 
                       ColumnDefinitions="*, *" 
@@ -40,15 +42,23 @@
                         <Border Stroke="{StaticResource Primary}">
                             <VerticalStackLayout Margin="20">
                                 <Label Style="{StaticResource SubHeadlineAlternative}">Set your settings</Label>
-                                <HorizontalStackLayout Margin="0, 20, 0, 5" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Fast Ping Mode"/>
-                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsFastPingDisabled}"/>
+
+                                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                    <HorizontalStackLayout Margin="0, 20, 0, 20" >
+                                        <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Fast Ping Mode"/>
+                                        <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsFastPingDisabled}"/>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Margin="0, 20, 0, 20">
+                                        <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Auto Run Mode"/>
+                                        <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsAutoRunDisabled}"/>
+                                    </HorizontalStackLayout>
                                 </HorizontalStackLayout>
-                                <HorizontalStackLayout Margin="0, 20, 0, 20" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label VerticalOptions="Center" Margin="0, 0, 20, 0" Text="Auto Run Mode"/>
-                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding MainVm.UserSelection.IsAutoRunDisabled}"/>
-                                </HorizontalStackLayout>
-                                <Button Command="{Binding ApplyUserSelectionCommand}" Text="Apply"></Button>
+
+                                <Button Margin="20" 
+                                        MaximumWidthRequest="400" 
+                                        Command="{Binding ApplyUserSelectionCommand}" 
+                                        Text="Apply"/>
+
                             </VerticalStackLayout>
                         </Border>
                     </FlexLayout>
@@ -91,6 +101,7 @@
 
                             <Button Margin="20" 
                                     Text="Create"
+                                    MaximumWidthRequest="400"
                                     Command="{Binding CreateNewDeviceCommand}"/>
                         </FlexLayout>
                     </Border>
@@ -126,6 +137,7 @@
                             </StackLayout>
 
                             <Button Margin="20"
+                                    MaximumWidthRequest="400" 
                                     Command="{Binding CreateNewDeviceGroupCommand}"
                                     Text="Create">
                             </Button>
@@ -134,7 +146,7 @@
                     
                 </Grid>
             </ScrollView>
-        </Grid>
-    </ScrollView>
+        
+    </Grid>
 
 </ContentPage>
