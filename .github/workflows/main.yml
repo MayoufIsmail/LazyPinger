@@ -22,7 +22,7 @@ jobs:
         continue-on-error: true
 
   build-and-test:
-    needs: lint 
+    needs: lint
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -81,20 +81,25 @@ jobs:
           path: ./publish
 
   release:
-    needs: build-and-test 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
+    needs: build-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: windows-latest
+
+    permissions:
+      contents: write
     steps:
       - name: Download Application Artifact
         uses: actions/download-artifact@v4
         with:
           name: LazyPinger-Windows
           path: ./publish
-     # - name: Create Release
-    #    uses: softprops/action-gh-release@v2
-     #   with:
-      #    files: ./publish/*
-      #    tag_name: v1.0.${{ github.run_number }}
-       #   name: Release v1.0.${{ github.run_number }}
+          
+     
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./publish/*
+          tag_name: v1.0.${{ github.run_number }}
+          name: Release v1.0.${{ github.run_number }}
           body: |
             Automated release for build ${{ github.run_number }}.
