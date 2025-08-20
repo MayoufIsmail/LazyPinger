@@ -1,4 +1,4 @@
-# Windows VersionV1
+# Windows VersionV1.0.1
 name: Build, Test, and Release MAUI for Windows
 
 on:
